@@ -1,60 +1,167 @@
 <template>
-  <div>
-    Wordpairs of Pad
+  <div class="word-pairs-of-pad-container">
+    <NavbarButton id="add-card-button" text="Add Card"
+                  :link="this.$route.fullPath.substring(1) + '/add-pair'"
+                  :elements="[this.$route.params.padId]"/>
 
-    <table>
-      <thead>
-      <tr>
-        <th>#</th>
+    <div v-if="isLoaded">
+      <AppTable class="pairs-table" :table-title= "'Cards of ' + this.padName + ' Deck'"
+                :header="['#', 'Foreign Ford', 'Translation', 'Progress', 'Edit', 'Delete']"
+                :rows="this.rows" :row-classes="rowClasses"
+                :cell-actions="this.cellActions"/>
+    </div>
 
-        <th>Foreign Word</th>
-        <th>Translation</th>
-      </tr>
-      </thead>
+    <div v-if="!isLoaded">
+      <AppSpinner/>
+    </div>
 
-      <tbody>
-      <tr v-for="(pair, index) in this.wordpairs">
-        <th>{{index + 1}}</th>
-
-        <td>{{pair.foreignWord}}</td>
-        <td>{{pair.translation}}</td>
-      </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 
 <script>
 import WordPairsService from "@/services/WordPairsService";
+import AppTable from "@/components/AppTable";
+import NavbarButton from "@/components/NavbarButton";
+import AppSpinner from "@/components/AppSpinner";
+import WordPadService from "@/services/WordPadService";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "WordPairsOfPad",
-
+  components: {AppSpinner, NavbarButton, AppTable},
   data()  {
     return {
-      wordpairs: []
+      wordpairs: [],
+      rows: [],
+      rowClasses: [],
+
+      isLoaded: false,
+
+      padName: "",
+
+      cellActions: [],
+
     }
   },
 
-  created()  {
+  async created()  {
     let padId = this.$route.params.padId;
 
+    let start = new Date();
+
     console.log("padId = " + padId);
+    let pad = await WordPadService.getPadById(padId);
+    this.padName = pad.name;
+
     this.getPairsByPadId(padId).then(() =>  {
       console.log("Got pairs: " + this.wordpairs.length + "!");
+      if (this.wordpairs.length === 0)  {
+        this.isLoaded = true;
+        return;
+      }
+
+      this.rows = [];
+      this.rowClasses = [];
+
+      for (let i = 0; i < this.wordpairs.length; i++) {
+        let pair = this.wordpairs[i];
+        console.log("pair = " + JSON.stringify(pair));
+
+        let progressString = new Intl.NumberFormat('en-IN', {
+          maximumFractionDigits: 2
+        }).format(100 * pair.progress) + "%";
+        this.rows.push([i + 1, pair.foreignWord, pair.translation,  progressString, '🖊️️', '❌']);
+
+        this.rowClasses.push(["", "", "", "bright-blue bold", "", ""]);
+        this.cellActions.push([null, null, null,
+          null, this.editCard, this.deleteCard]);
+
+        let end = new Date();
+        let elapsed = end - start; // ms
+
+        let neededWait = 700;
+        let remainingWait = neededWait - elapsed;
+
+        console.log("remainingWait = " + remainingWait);
+       /* setTimeout(() =>  {
+          this.isLoaded = true;
+        }, 1200);*/
+        this.isLoaded = true;
+      }
+    }).catch((e) => {
+      console.log(e);
+      this.isLoaded = true;
     });
   },
 
+
   methods:  {
     async getPairsByPadId(padId)  {
-      let pairs = await WordPairsService.getPairsByPadIdyPadId(padId);
-      this.wordpairs = pairs;
+      let result = await WordPairsService.getPairsByPadId(padId);
+
+
+      this.wordpairs = result;
       console.log(this.wordpairs);
+    },
+
+    async deleteCard(i, j)  {
+      console.log("deleteCard " + i + ", " + j);
+
+      console.log("deleteCard");
+
+      let card = this.wordpairs[i];
+
+      let padId = this.$route.params.padId;
+      let foreign = card.foreignWord;
+      let translation = card.translation;
+
+      let result = await WordPairsService.deletePair(foreign, translation, padId);
+      if (result)  {
+     /*   this.$router
+            .push({ path: this.$route.path })
+            .then(() => { this.$router.go() })*/
+        this.$router.go();
+      }
+    },
+
+
+    async editCard(i, j)  {
+      console.log("editCard " + i + ", " + j);
+      let card = this.wordpairs[i];
+
+    /*  let card = this.wordpairs[i];
+
+      let padId = this.$route.params.padId;
+      let foreign = card.foreignWord;
+      let translation = card.translation;
+
+      let result = await WordPairsService.deletePair(foreign, translation, padId);
+      if (result)  {
+        /!*   this.$router
+               .push({ path: this.$route.path })
+               .then(() => { this.$router.go() })*!/
+        this.$router.go();
+      }
+*/
+      let padId = this.$route.params.padId;
+      this.$router.push({ path: '/user/' + AuthService.getLoggedInUser().username + '/pad/' +
+        padId + "/card/" + card.pairId + '/edit-card'});
     }
   }
 }
 </script>
 
 <style scoped>
+  .word-pairs-of-pad-container  {
+    margin: 2em;
+   }
 
+  #add-card-button  {
+    margin-top: 2em !important;
+
+  }
+
+  .pairs-table  {
+    margin-top: 2em;
+  }
 </style>

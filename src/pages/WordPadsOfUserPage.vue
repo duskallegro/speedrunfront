@@ -49,7 +49,7 @@ export default {
 
       let user = await UserService.getUserByUsername(username);
       let discordId = user.discordId;
-      let pads = await WordPadService.getPadsByDiscordId(discordId);
+      let pads = await WordPadService.getPadsByUserId(user.userId);
 
       console.log(pads);
 
