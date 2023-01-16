@@ -8,16 +8,18 @@
 
     </div>
 
+<!--
     <FooterComponent/>
+-->
 
 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import HomePage from './pages/HomePage.vue'
-import NavbarComponent from "@/components/NavbarComponent";
-import FooterComponent from "@/components/FooterComponent";
+import HelloWorld from './app/component/HelloWorld.vue'
+import HomePage from './app/page/HomePage.vue'
+import NavbarComponent from "@/app/component/structure/navbar/NavbarComponent";
+import FooterComponent from "@/app/component/structure/footer/FooterComponent";
 
 export default {
   name: 'App',
@@ -30,7 +32,7 @@ export default {
 </script>
 
 <style>
-@import './assets/main.css';
+@import 'app/assets/main.css';
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Josefin+Sans:wght@400;500&family=Moon+Dance&family=Overpass&family=Roboto:wght@300&family=Rubik:wght@300&family=Signika&display=swap');
 
 [v-cloak] {
@@ -39,7 +41,7 @@ export default {
 
 body {
   font-family: 'Josefin Sans', sans-serif;
-
+  height: 100%;
   /*  background-color:  yellow;
 
     display: flex;
@@ -66,6 +68,42 @@ body {
 html  {
   scroll-behavior: smooth;
   scroll-padding-top: 1000px;
+
+  height: 100%;
+}
+body  {
+  height: 100%;
+}
+
+
+
+
+#app {
+ /* display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+
+
+
+  width: 100%;
+  min-width: 100%;
+
+
+
+
+
+
+*/
+   min-height: 100%;
+
+  background-color: var(--DARK_GRAY);
+  color: var(--LIGHT_FONT_COLOR) !important;
+/*
+  background-color: red;
+*/
 }
 
 #content-component  {
@@ -79,37 +117,21 @@ html  {
   margin-top: 12vh;
 
   font-size: 1.2em;
-/*    background-color: yellow;*/
+/*
+  background-color: yellow;
+*/
+
+  min-height: 90%;
+ /*
+  height: 84%;
+*/
+
+  /*padding: 2em;*/
 }
 
-body  {
- }
 
 .capitalize  {
   text-transform: capitalize;
-
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: start;
-  align-items: center;
-  align-content: center;
-
-  min-height: 100vh !important;
-
-
-  width: 100%;
-  min-width: 100%;
-
-
-  min-height: 100vh;
-
-  background-color: var(--DARK_GRAY);
-
-   color: var(--LIGHT_FONT_COLOR) !important;
 
 }
 
@@ -138,8 +160,31 @@ body  {
   font-weight: bold;
 }
 
-
 .bright-blue  {
+  background-color: var(--REAL_BRIGHT_BLUE) !important;
+}
+
+.bright-blue-text  {
   color: var(--REAL_BRIGHT_BLUE) !important;
+}
+
+
+
+@media screen and (max-width: 1300px) {
+
+}
+
+@media screen and (max-width: 600px) {
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+}
+
+
+@media screen and (max-width: 300px) {
+
 }
 </style>

@@ -1,0 +1,41 @@
+:root  {
+    --DARK_GRAY: #122333;
+    --LIGHTER_GRAY: #182B3C;
+
+    --TABLE_HEADER_BLUE: #1e384e;
+
+    --YELLOW: orange;
+
+    --FONT_GRAY_COLOR: #90a5b7;
+
+    --LIGHTER_GREEN: #2DAC68;
+    --GREEN: #2EAC68;
+    --DARK_GREEN: #245857;
+
+    --LIGHTER_BLUE_GRAY: #254058;
+    --DARK_BLUE_GRAY: #234056;
+
+    --FORM_INPUT_BLUE_GRAY: #21374a;
+
+    --TAG_GRAY: #273a4b;
+    --TAG_FONT_COLOR_SILVER: #9db1c5;
+
+    --TABLE_BORDER: #7e99b4;
+
+    --LIGHT_FONT_COLOR: #cdd9e3;
+
+    --REAL_BRIGHT_BLUE: #0e6db4;
+    --REAL_DIM_BLUE: #315d89;
+
+    --FORM_BORDER_LIGHT_GRAY: #344758;
+
+    --BRIGHT_GRAY: #24405a;
+
+    --BRIGHT_LIGHT_FONT_COLOR: #eff3f6;
+
+    --DARKER_LIGHT_FONT_COLOR: #9db5c8;
+}
+
+body  {
+    min-height: 100vh;
+}

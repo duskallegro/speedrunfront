@@ -1,20 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomePage from '@/pages/HomePage';
-import AllUsersPage from '@/pages/AllUsersPage';
-import UserPage from '@/pages/UserPage';
-import WordPadOfUserPage from '@/pages/WordPadOfUserPage';
-import WordPadsOfUserPage from '@/pages/WordPadsOfUserPage';
-import WordPairsOfPad from '@/pages/WordPairsOfPad';
-import CreateAccountPage from '@/pages/CreateAccountPage';
-import LoginPage from '@/pages/LoginPage';
+import HomePage from '@/app/page/HomePage';
+import AllUsersPage from '@/user/view/page/AllUsersPage';
+import UserPage from '@/user/view/page/UserPage';
+import DeckOfUserPage from '@/deck/view/page/DeckOfUserPage';
+import DecksOfUserPage from '@/deck/view/page/DecksOfUserPage';
+import CardsOfDeckPage from '@/card/view/page/CardsOfDeckPage';
+import CreateAccountPage from '@/user/create/page/CreateAccountPage';
+import LoginPage from '@/user/create/page/LoginPage';
 
-import AddPadPage from '@/pages/AddPadPage';
-import TestPage from '@/pages/TestPage';
-import AddPairPage from "@/pages/AddPairPage";
-import EditPairPage from "@/pages/EditPairPage";
+import AddDeckPage from '@/deck/create/page/AddDeckPage';
+import TestPage from '@/app/test/TestPage';
+import AddPairPage from "@/card/create/page/AddPairPage";
+import EditPairPage from "@/card/edit/page/EditPairPage";
+import MoreTestPage from '@/app/test/MoreTestPage';
 
-let router = createRouter({
+import PracticeDeckPage from "@/deck/practice/page/PracticeDeckPage";
+import GuessAndRatePracticePage from "@/deck/practice/page/GuessAndRatePracticePage";
+import ChoicesPracticePage from "@/deck/practice/page/ChoicesPracticePage";
+import SelectGuessPracticeModePage from "@/deck/practice/page/SelectGuessPracticeModePage";
+
+ let router = createRouter({
     history: createWebHistory(),
     routes: [
         {
@@ -38,6 +44,11 @@ let router = createRouter({
             component: TestPage
         },
         {
+            path: '/more',
+            name: 'MoreTestPage',
+            component: MoreTestPage
+        },
+        {
             path: '/user/:username',
             name: 'UserPage',
             component: UserPage,
@@ -59,37 +70,79 @@ let router = createRouter({
         },
 
         {
-            path: '/user/:username/pads',
-            name: "WordPadsOfUserPage",
-            component: WordPadsOfUserPage,
+            path: '/user/:username/decks',
+            name: "DecksOfUserPage",
+            component: DecksOfUserPage,
             props: true
         },
 
         {
-            path: '/user/:username/pad/:padId',
-            name: 'WordPairsOfPad',
-            component: WordPairsOfPad
+            path: '/user/:username/deck/:padId',
+            name: 'CardsOfDeckPage',
+            component: CardsOfDeckPage
         },
 
         {
-            path: '/add-pad',
-            name: 'AddPadPage',
-            component: AddPadPage
+            path: '/add-deck',
+            name: 'AddDeckPage',
+            component: AddDeckPage
         },
         {
-            path: '/user/:username/pad/:padId/card/:cardId/edit-card',
+            path: '/user/:username/deck/:padId/card/:cardId/edit-card',
             name: 'EditPairPage',
             component: EditPairPage
         },
         {
-            path: '/user/:username/pad/:padId/add-pair',
+            path: '/user/:username/deck/:padId/add-pair',
             name: 'AddPairPage',
             component: AddPairPage,
             props: route => ({
                 padId: parseInt(route.params.padId),
                 loggedInUsername: route.params.username
             })
+        },
+        {
+            path: '/user/:username/deck/:padId/practice',
+            name: 'PracticeDeckPage',
+            component: PracticeDeckPage,
+            props: route => ({
+                padId: parseInt(route.params.padId),
+                loggedInUsername: route.params.username
+            })
+        }
 
+
+        ,
+        {
+            path: '/user/:username/deck/:padId/practice/guess-and-rate/:mode',
+            name: 'GuessAndRatePracticePage',
+            component: GuessAndRatePracticePage,
+            props: route => ({
+                padId: parseInt(route.params.padId),
+                loggedInUsername: route.params.username,
+                mode: route.params.mode
+            })
+        }
+
+        ,
+        {
+            path: '/user/:username/deck/:padId/practice/choices',
+            name: 'ChoicesPracticePage',
+            component: ChoicesPracticePage,
+            props: route => ({
+                padId: parseInt(route.params.padId),
+                loggedInUsername: route.params.username
+            })
+        }
+        ,
+        {
+            path: '/user/:username/deck/:padId/practice/select-guess-mode',
+            name: 'SelectGuessPracticeModePage',
+            component: SelectGuessPracticeModePage,
+            props: route => ({
+                padId: parseInt(route.params.padId),
+                loggedInUsername: route.params.username
+            })
         }
     ]
 });
