@@ -191,15 +191,33 @@ methods:  {
 </script>
 
 <style scoped>
+  .practice-pair-container  {
+    margin: 0;
+    width: 90%;
+    min-width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+  }
+
   .pair-container  {
     margin-top: 2em;
 
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+
     display: grid;
     grid-template-columns: auto auto;
-    grid-auto-rows: minmax(100px, auto);
+    /*grid-auto-rows: minmax(100px, auto);*/
 
     column-gap: 2em;
     row-gap: 2em;
+
+
 
 /*
     background-color: red;
@@ -228,5 +246,138 @@ methods:  {
   .error-message  {
     color: red;
     font-weight: bold;
+  }
+
+  .matching-pair-header  {
+    display: flex;
+    justify-content: center;
+   }
+
+
+  /* Media */
+
+
+  @media screen and (max-width: 1300px) {
+    .practice-pair-container  {
+/*
+      background-color: aqua;
+*/
+      width: 100%;
+
+    }
+
+    .pair-container  {
+      min-width: 70%;
+      max-width: 70%;
+
+      column-gap: 1.5em;
+      margin-left: 2em;
+      margin-right: 2em;
+    }
+
+    .matching-pair-header {
+      font-size: 1.7em;
+      margin-bottom: 1em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .practice-pair-container {
+/*
+      background-color: silver;
+*/
+      width: 100%;
+
+    }
+
+    .pair-container  {
+/*
+      background-color: purple;
+*/
+
+      min-width: 80%;
+      max-width: 80%;
+
+      column-gap: 0.5em;
+
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+
+    .matching-pair-header {
+      font-size: 1.5em;
+    }
+  }
+
+
+  @media screen and (max-width: 400px) {
+    .practice-pair-container  {
+
+/*
+      background-color: blue;
+*/
+
+
+      width: 90% !important;
+      max-width: 90%;
+      min-width: 90%;
+
+      overflow: hidden;;
+    }
+
+    .pair-container  {
+      min-width: 100%;
+      max-width: 100%;
+
+      column-gap: 0.2em !important;
+      row-gap: 0em;
+
+      margin-left: 0.5em !important;
+      margin-right: 0.5em !important;
+
+/*
+      background-color: yellow;
+*/
+    }
+
+    .matching-pair-header{
+      font-size: 0.9em;
+    }
+  }
+
+
+  @media screen and (max-width: 300px) {
+    .practice-pair-container  {
+      width: 95%;
+      min-width: 95%;
+
+/*
+      background-color: blue;
+*/
+
+      width: 100%;
+
+      overflow: hidden;;
+    }
+
+    .pair-container  {
+      min-width: 100%;
+      max-width: 100%;
+
+      column-gap: 0.1em !important;
+      row-gap: 0em;
+
+      margin-left: 0.2em !important;
+      margin-right: 0.2em !important;
+
+/*
+      background-color: yellow;
+*/
+    }
+
+    .matching-pair-header{
+      font-size: 0.9em;
+    }
   }
 </style>

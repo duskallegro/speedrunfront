@@ -100,6 +100,10 @@ methods:  {
 
 <style scoped>
   .card-pair-practice {
+    font-size: 1.2em;
+
+    margin: 0.5em;
+
     background-color: var(--BRIGHT_GRAY);
 
     padding: 0.5em;
@@ -115,5 +119,49 @@ methods:  {
 
   .translation  {
     filter: brightness(1.5);
+  }
+
+
+
+  /* Media */
+
+
+  @media screen and (max-width: 1300px) {
+     .card-pair-practice  {
+
+     }
+  }
+
+  @media screen and (max-width: 600px) {
+    .card-pair-practice  {
+
+    }
+  }
+
+
+  @media screen and (max-width: 400px) {
+    .card-pair-practice  {
+      /*   background-color: red;*/
+      font-size: 0.8em !important;
+
+
+      margin: 0.5em !important;
+      padding: 0em !important;
+
+    }
+  }
+
+
+  @media screen and (max-width: 300px) {
+    .card-pair-practice  {
+   /*   background-color: red;*/
+      font-size: 0.7em !important;
+
+
+      margin: 0.4em !important;
+      padding: 0em !important;
+
+    }
+
   }
 </style>
