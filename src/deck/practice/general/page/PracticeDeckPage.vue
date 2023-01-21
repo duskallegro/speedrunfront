@@ -9,12 +9,16 @@
       <PracticeMode name="Multiple Choice"
                     :link="'/' + this.$route.fullPath.substring(1) + '/choices'"
                     description="Find the correct answer among several options"/>
+
+      <PracticeMode name="Find Pairs"
+                    :link="'/' + this.$route.fullPath.substring(1) + '/pair'"
+                    description="Find the correct pairs"/>
     </div>
   </div>
 </template>
 
 <script>
-import PracticeMode from "@/deck/practice/component/PracticeMode";
+import PracticeMode from "@/deck/practice/general/component/PracticeMode";
 export default {
 name: "PracticeDeckPage",
   components: {PracticeMode}

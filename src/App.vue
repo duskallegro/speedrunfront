@@ -35,6 +35,12 @@ export default {
 @import 'app/assets/main.css';
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Josefin+Sans:wght@400;500&family=Moon+Dance&family=Overpass&family=Roboto:wght@300&family=Rubik:wght@300&family=Signika&display=swap');
 
+
+div, a, input, textarea, button, select  {
+  -webkit-tap-highlight-color: transparent;
+
+}
+
 [v-cloak] {
   display: none;
 }

@@ -56,6 +56,12 @@ methods:  {
   flip() {
     console.log("flipped!");
 
+    // don't close an opened card
+    if (!this.isHidden) {
+      return;
+    }
+
+
     this.isHidden = !this.isHidden;
 
     if (this.isHidden === true) {

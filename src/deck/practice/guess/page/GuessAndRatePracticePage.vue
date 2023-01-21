@@ -21,6 +21,12 @@
           <span v-if="this.showRates">😎</span>
         </div>
       </div>
+
+      <div class="flip-button" v-if="!this.showRates"
+           v-on:click.stop="this.$refs.currentCardObject.flip(); this.cardFlippedAction()">
+
+      </div>
+
       <div class="card-for-practice-container">
         <CardGuessComponent :foreignWord="this.currentCard.foreignWord"
               :translation="this.currentCard.translation"
@@ -45,7 +51,7 @@
 <script>
 import DeckService from "@/app/services/DeckService";
 import CardService from "@/app/services/CardService";
-import CardGuessComponent from "@/deck/practice/component/CardGuessComponent";
+import CardGuessComponent from "@/deck/practice/guess/component/CardGuessComponent";
 import util from "@/app/services/util";
 import AppSpinner from "@/app/component/spinner/AppSpinner";
 
@@ -191,7 +197,7 @@ export default {
 
 /* Lights */
 
-.rate-card  {
+.rate-card, .flip-button  {
   display: flex;
   justify-content: space-between;
 
@@ -243,6 +249,22 @@ export default {
   background-color: transparent;
 }
 
+.invisible-rates  {
+  display: none;
+}
+
+.flip-button  {
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--DARK_GREEN);
+
+  font-weight: bold;
+  font-family: monospace;
+
+  cursor: pointer;
+}
 
 @media screen and (max-width: 1300px) {
   .guess-practice-container  {

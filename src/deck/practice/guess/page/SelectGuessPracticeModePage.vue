@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import PracticeMode from "@/deck/practice/component/PracticeMode";
+import PracticeMode from "@/deck/practice/general/component/PracticeMode";
 import AuthService from "@/app/services/AuthService";
 
 export default {
