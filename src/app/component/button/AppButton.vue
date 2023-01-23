@@ -29,9 +29,9 @@ props:  {
 
 <style scoped>
 .button  {
-  background-color: var(--GREEN);
+  background-color: var(--BUTTON_BACKGROUND_SECOND);
 
-  border-radius: 0.1em;
+  border-radius: 1.2em;
   padding: 0.5em;
   padding-left: 1em;
   padding-right: 1em;
@@ -40,7 +40,9 @@ props:  {
 
   margin-left: 1em;
 
-  color: var(--LIGHT_FONT_COLOR);
+   color: var(--TERTIARY_FONT);
+  font-size: 1.5em;
+
 }
 
 .button:hover  {
@@ -49,12 +51,12 @@ props:  {
 }
 
 
-
+/*
 .button.blue  {
-  background-color: var(--LIGHTER_BLUE_GRAY);
+  background-color: var(--LIGHTER_BLUE_GRAY); // = selected table row background
 }
 
 .button.dim-blue  {
-  background-color: var(--REAL_DIM_BLUE);
-}
+  background-color: var(--REAL_DIM_BLUE);#315d89
+}*/
 </style>

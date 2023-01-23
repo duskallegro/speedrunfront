@@ -33,7 +33,7 @@ name: "AppSpinner"
 
 div.any {
 
-  background-color: #1d3242;/*#08615e*/;
+  background-color: var(--BODY_BACKGROUND);
   position:fixed;
   width:100%;
   height:100%;

@@ -21,16 +21,19 @@ computed:  {
   filterStyle()  {
     if (this.isHidden)  {
       return  {
-        display: 'none'
+        /*display: 'none'*/
+        visibility: 'hidden'
+
+
       }
     }
 
     if (this.isGuessed)  {
       return  {
-      'transition-delay': '0.5s',
+       'transition-delay': '0.5s',
 
         'transition-property': 'background-color',
-        background: 'green',
+        background: '#2EAC68',
         border: '2px solid green',
       }
     }
@@ -104,9 +107,9 @@ methods:  {
 
     margin: 0.5em;
 
-    background-color: var(--BRIGHT_GRAY);
+    background-color: var(--CARD_BACKGROUND);
 
-    padding: 0.5em;
+     padding: 0.5em;
 
     cursor: pointer;
 
@@ -115,10 +118,15 @@ methods:  {
     align-items: center;
 
     border: 2px solid transparent;
+
+    max-width: 50%;
+    min-width: 50%;
+    width: 50%;
+
    }
 
   .translation  {
-    filter: brightness(1.5);
+     background-color: var(--CARD_PAIR_MATCH_TRANSLATION_BACKGROUND);
   }
 
 
@@ -142,7 +150,7 @@ methods:  {
   @media screen and (max-width: 400px) {
     .card-pair-practice  {
       /*   background-color: red;*/
-      font-size: 0.8em !important;
+      font-size: 0.9em !important;
 
 
       margin: 0.5em !important;
@@ -155,7 +163,7 @@ methods:  {
   @media screen and (max-width: 300px) {
     .card-pair-practice  {
    /*   background-color: red;*/
-      font-size: 0.7em !important;
+      font-size: 0.8em !important;
 
 
       margin: 0.4em !important;

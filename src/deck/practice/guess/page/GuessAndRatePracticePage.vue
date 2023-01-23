@@ -5,10 +5,26 @@
         Guess and Rate
       </div>
 
+
+      <div class="card-for-practice-container">
+        <CardGuessComponent :foreignWord="this.currentCard.foreignWord"
+              :translation="this.currentCard.translation"
+              :examples = "this.currentCard.examples"
+
+              :mode = "this.currentMode"
+                            ref="currentCardObject"
+                       v-on:click.stop="cardFlippedAction"
+                            v-on:cardOpened="this.cardOpened($event)"
+                            v-on:cardClosed="this.cardClosed($event)"
+        />
+      </div>
+
+
+
       <div class="rate-card"
            v-on:click.stop="rateAndNext"
-            :class="this.showRates ? 'visible-rates' : 'invisible-rates'"
-            >
+           :class="this.showRates ? 'visible-rates' : 'invisible-rates'"
+      >
         <div class="red-light">
           <span v-if="this.showRates">🙁</span>
         </div>
@@ -20,24 +36,6 @@
         <div class="green-light">
           <span v-if="this.showRates">😎</span>
         </div>
-      </div>
-
-      <div class="flip-button" v-if="!this.showRates"
-           v-on:click.stop="this.$refs.currentCardObject.flip(); this.cardFlippedAction()">
-
-      </div>
-
-      <div class="card-for-practice-container">
-        <CardGuessComponent :foreignWord="this.currentCard.foreignWord"
-              :translation="this.currentCard.translation"
-
-
-              :mode = "this.currentMode"
-                            ref="currentCardObject"
-                       v-on:click.stop="cardFlippedAction"
-                            v-on:cardOpened="this.cardOpened($event)"
-                            v-on:cardClosed="this.cardClosed($event)"
-        />
       </div>
 
     </div>
@@ -54,6 +52,7 @@ import CardService from "@/app/services/CardService";
 import CardGuessComponent from "@/deck/practice/guess/component/CardGuessComponent";
 import util from "@/app/services/util";
 import AppSpinner from "@/app/component/spinner/AppSpinner";
+import ExampleService from "@/app/services/ExampleService";
 
 export default {
   name: "GuessAndRatePracticePage",
@@ -83,6 +82,10 @@ export default {
   async beforeCreate() {
     this.deck = await DeckService.getPadById(this.padId);
     this.cards = await CardService.getPairsByPadId(this.padId);
+
+    for (let i = 0; i < this.cards.length; i++) {
+      this.cards[i].examples = await ExampleService.getExamplesByCardId(this.cards[i].pairId);
+    }
 
     this.pickCard();
 
@@ -163,7 +166,11 @@ export default {
 /*
   height: 80%;
 */
- }
+
+  min-height: 40%;
+  max-height: 40vh;
+  overflow: hidden;
+}
 
 .guess-practice-container  {
 /*
@@ -197,23 +204,39 @@ export default {
 
 /* Lights */
 
-.rate-card, .flip-button  {
+.rate-card  {
   display: flex;
   justify-content: space-between;
 
-  min-height: 30%;
-  height: 30%;
+  min-height: 50%;
+  height: 50%;
 }
+
+.rate-card  {
+  position: absolute;
+  bottom: 0;
+  left: 10vw;
+
+  min-height: 150px;
+  height: 150px;
+
+  min-width: 80vw;
+  width: 80vw;
+
+  margin-top: 10vh;
+
+}
+
 
 .rate-card div  {
   cursor: pointer;
-  font-size: 1.5em;
+  font-size: 2.5em;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  filter: brightness(0.5);
+ /* filter: brightness(0.5);*/
 }
 
 .rate-card div:hover  {
@@ -251,19 +274,6 @@ export default {
 
 .invisible-rates  {
   display: none;
-}
-
-.flip-button  {
-  background-color: red;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--DARK_GREEN);
-
-  font-weight: bold;
-  font-family: monospace;
-
-  cursor: pointer;
 }
 
 @media screen and (max-width: 1300px) {

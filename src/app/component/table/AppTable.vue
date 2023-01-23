@@ -150,13 +150,15 @@ created() {
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Josefin+Sans:wght@400;500&family=Moon+Dance&family=Overpass&family=Roboto:wght@300&family=Rubik:wght@300&family=Signika&display=swap');
 
 .table-wrapper  {
-  background-color: var(--LIGHTER_GRAY);
+  background-color: var(--TABLE_BACKGROUND);
   border-radius: 0.8em;
   padding: 2em;
 
   font-size: 1.2em;
 
-
+/*
+  box-shadow: 0px 0px 20px 20px var(--TABLE_SHADOW);
+*/
 }
 
 .table-title  {
@@ -179,7 +181,7 @@ created() {
 }
 
 .app-table tr:hover  {
-  background-color: var(--LIGHTER_BLUE_GRAY);
+  background-color: var(--TABLE_ROW_SELECTION_BACKGROUND);
 }
 
 .app-table th, td  {
@@ -189,16 +191,16 @@ created() {
   horiz-align: left !important;
 
   text-align: left;
-  color: var(--TAG_FONT_COLOR_SILVER);
+  color: var(--TABLE_TEXT_COLOR);
 
   cursor: pointer;
 }
 
 .app-table th  {
-  background-color: var(--TABLE_HEADER_BLUE);
+  background-color: var(--TABLE_HEADER_BACKGROUND);
   border-bottom: none !important;
   font-weight: normal;
-  color: var(--TAG_FONT_COLOR_SILVER);
+  color: var(--TABLE_TEXT_COLOR);
 }
 
 .app-table td  {

@@ -1,7 +1,10 @@
 <template>
   <div id="navbar"  >
-    <div id="header" >
-      <img src="../../../assets/wordkicklogo.png" v-on:click.stop="myClickEvent"/>
+    <div id="header"
+         v-on:click.stop="this.$router.push(
+              {path: '/'})" >
+<!--      <img src="../../../assets/wordkicklogo.png" v-on:click.stop="myClickEvent"/>-->
+      WordKick
     </div>
 
     <div class="hamburger" v-on:click.stop="hamburgerAction">
@@ -121,7 +124,7 @@ name: "NavbarComponent",
 
   overflow: hidden;
 
-  background-color: var(--DARK_GRAY);
+  background-color: var(--BODY_BACKGROUND);
  }
 
 #navbar:hover  {
@@ -131,9 +134,11 @@ name: "NavbarComponent",
 
 #header  {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3rem;
 
   width: 10%;
+
+  color: var(--HEADER_TEXT_COLOR);
 }
 
 #navbar-buttons  {
@@ -173,7 +178,8 @@ name: "NavbarComponent",
 
 
     position: fixed;
-    background-color: var(--TAG_GRAY);
+    background-color: var(--BODY_BACKGROUND);
+
 
     height: 100vh !important;
     width: 100vw !important;
@@ -242,6 +248,7 @@ name: "NavbarComponent",
 @media screen and (max-width: 600px) {
   #header  {
     width: 30%;
+    font-size: 2em;
   }
 
 
@@ -251,6 +258,8 @@ name: "NavbarComponent",
 @media screen and (max-width: 400px) {
   #header  {
     width: 40%;
+    font-size: 2em;
+
   }
 
 }
@@ -259,6 +268,8 @@ name: "NavbarComponent",
 @media screen and (max-width: 300px) {
   #header  {
     width: 50%;
+    font-size: 1.5em;
+
   }
 
 

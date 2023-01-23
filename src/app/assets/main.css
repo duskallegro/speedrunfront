@@ -1,39 +1,126 @@
 :root  {
-    --DARK_GRAY: #122333;
-    --LIGHTER_GRAY: #182B3C;
 
+    /* PRIMARY */
+
+    /* Dark */
+
+    --PRIMARY_SHADOW: black;
+
+    --PRIMARY_DARK_HARD: #122333;
+    --PRIMARY_DARK_MEDIUM: #182B3C;
+    --PRIMARY_DARK_EASY: #182B3C;
+    --PRIMARY_DARK_FREE: #182B3C;
+
+    --PRIMARY_MAIN: var(--PRIMARY_DARK_HARD);
+
+    /* Light */
+
+    --PRIMARY_LIGHT_HARD: #24405a;
+    --PRIMARY_LIGHT_MEDIUM: #273a4b;
+    --PRIMARY_LIGHT_EASY: #273a4b;
+
+
+    /* SECONDARY */
+
+    /* Dark */
+
+    --SECONDARY_DARK_HARD: #245857;
+    --SECONDARY_DARK_MEDIUM: #2EAC68;
+    --SECONDARY_DARK_EASY: #2DAC68;
+
+    --SECONDARY_MAIN: var(--SECONDARY_DARK_MEDIUM);
+
+    /* TERTIARY */
+
+    /* Dark */
+
+    --TERTIARY_DARK_HARD: #ba3417;
+    --TERTIARY_DARK_MEDIUM: #ee6250;
+    --TERTIARY_DARK_EASY: #ebaf4e;
+
+    --TERTIARY_MAIN: var(--TERTIARY_DARK_EASY);
+
+    /* QUATERNARY */
+
+    --QUATERNARY_DARK_HARD: red;
+    --QUATERNARY_MAIN: #0e6db4;
+
+
+    /* Blue */
+
+
+    /* Font colors */
+
+    /*
+    PRIMARY BUTTONS FONT
+    */
+
+    /* SECONDARY BUTTONS FONT */
+
+    /* TERTIARY BUTTONS FONT */
+
+    --TERTIARY_FONT: #b1ffff;
+
+    /* White */
+
+    --LIGHT_FONT_COLOR: #cdd9e3;
     --TABLE_HEADER_BLUE: #1e384e;
-
-    --YELLOW: orange;
-
-    --FONT_GRAY_COLOR: #90a5b7;
-
-    --LIGHTER_GREEN: #2DAC68;
-    --GREEN: #2EAC68;
-    --DARK_GREEN: #245857;
-
-    --LIGHTER_BLUE_GRAY: #254058;
-    --DARK_BLUE_GRAY: #234056;
-
-    --FORM_INPUT_BLUE_GRAY: #21374a;
-
-    --TAG_GRAY: #273a4b;
-    --TAG_FONT_COLOR_SILVER: #9db1c5;
 
     --TABLE_BORDER: #7e99b4;
 
-    --LIGHT_FONT_COLOR: #cdd9e3;
-
-    --REAL_BRIGHT_BLUE: #0e6db4;
-    --REAL_DIM_BLUE: #315d89;
-
     --FORM_BORDER_LIGHT_GRAY: #344758;
-
-    --BRIGHT_GRAY: #24405a;
 
     --BRIGHT_LIGHT_FONT_COLOR: #eff3f6;
 
     --DARKER_LIGHT_FONT_COLOR: #9db5c8;
+
+
+
+    /* Components */
+
+    /* Header */
+
+    --HEADER_TEXT_COLOR: var(--TERTIARY_MAIN);
+
+    /* Footer */
+
+    --FOOTER_BACKGROUND: var(--PRIMARY_LIGHT_EASY);
+
+    /* Titles */
+
+    --TITLE_COLOR_ONE: var(--SECONDARY_DARK_MEDIUM);
+
+    /* Body */
+    --BODY_BACKGROUND: var(--PRIMARY_DARK_HARD);
+
+    /* Tables */
+
+    --TABLE_BACKGROUND: var(--PRIMARY_DARK_MEDIUM);
+    --TABLE_ROW_SELECTION_BACKGROUND: '#254058';
+    --TABLE_SHADOW: var(--PRIMARY_SHADOW);
+    --TABLE_HEADER_BACKGROUND: var(--TABLE_BACKGROUND);
+    --TABLE_TEXT_COLOR: #9db1c5;
+
+    /* Buttons */
+
+    --BUTTON_BACKGROUND_FIRST: var(--SECONDARY_MAIN);
+    --BUTTON_BACKGROUND_SECOND: var(--TERTIARY_MAIN);
+    --BUTTON_BACKGROUND_THIRD: var(--QUATERNARY_MAIN);
+
+    /* Forms */
+
+    --FORM_BACKGROUND: var(--PRIMARY_DARK_MEDIUM);
+    --FORM_BUTTON_BACKGROUND: var(--SECONDARY_DARK_MEDIUM);
+    --FORM_INPUT_BACKGROUND: #21374a;
+
+    --ERROR_MESSAGE_COLOR: var(--QUATERNARY_MAIN);
+
+    /* Cards */
+
+    --CARD_BACKGROUND: var(--PRIMARY_LIGHT_HARD);
+    --CARD_EXAMPLE_HEADER_COLOR: var(--TITLE_COLOR_ONE);
+    --CARD_PAIR_MATCH_TRANSLATION_BACKGROUND: #366087;
+
 }
 
 body  {

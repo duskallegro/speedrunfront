@@ -35,7 +35,7 @@ props:  {
     align-items: center;
     align-content: center;
 
-    background-color: var(--LIGHTER_GRAY);
+    background-color: var(--FORM_BACKGROUND);
 
       width: 20%;
      aspect-ratio: 1 / 1;

@@ -1,6 +1,7 @@
 <template>
-  <AppForm :types="['text', 'text']" :placeholders="['Foreign Word', 'Translation']"
-           button-name="ADD" :form-action="createPairAction" form-title="Add Word"/>
+  <EditCardForm :types="['text', 'text']" :placeholders="['Foreign Word', 'Translation']"
+           button-name="ADD CARD" :form-action="createCardAction" form-title="Add Card"
+          formTitle="Add Card" examplesTitle = "Add Examples"/>
 </template>
 
 <script>
@@ -9,11 +10,16 @@ import UserService from "@/app/services/UserService";
 import AppForm from "@/app/component/form/AppForm";
 import CardService from "@/app/services/CardService";
 import DeckService from "@/app/services/DeckService";
+import AddCardForm from "@/card/create/component/AddCardForm";
+import EditCardForm from "@/card/edit/component/EditCardForm";
+import ExampleService from "@/app/services/ExampleService";
 
 export default {
   name: "AddPairPage",
 
   "components":  {
+    EditCardForm,
+    AddCardForm,
     AppForm
   },
 
@@ -34,17 +40,33 @@ export default {
   },
 
   methods: {
-    async createPairAction(models) {
-      console.log("createPairAction");
+    async createCardAction(models, examples) {
+      console.log("createCardAction");
 
       let foreign = models[0];
       let translation = models[1];
 
+
       console.log("foreign = " + foreign);
       console.log("translation = " + translation);
+      console.log("examples = " + examples);
 
-      let result =  await CardService.createWordPairByPadIdAndPair(this.padId, foreign, translation);
+      let deckId = this.$route.params.padId;
+      console.log("deckId = " + deckId);
+
+      // create card
+      let result =  await CardService.createWordPairByPadIdAndPair(deckId, foreign, translation);
       console.log(result);
+
+      let card = await CardService.getCardByDeckIdAndForeign(deckId, foreign);
+      console.log("the new card " + JSON.stringify(card));
+
+      // set examples
+      let cardId = card.pairId;
+      let username = this.$route.params.username;
+
+      result = await ExampleService.setExamplesForCard(cardId, deckId, examples);
+      console.log("setexamplesresult = " + result);
 
       switch (result)  {
         case "EMPTY_PAD_ID":
@@ -57,7 +79,7 @@ export default {
           if (result)  {
             this.$router
                 .push({ path: /*'/user/' + this.loggedInUsername + "/pad/" + this.padId*/
-                      '/user/' + this.loggedInUsername + "/deck/" + this.padId })
+                      '/user/' + username + "/deck/" + this.padId })
                 .then(() => { this.$router.go() })
           }
       }
@@ -90,7 +112,7 @@ export default {
    transform: translate(-50%, -50%);*/
   width: 100%;
   max-width: 50%;
-  background: var(--LIGHTER_GRAY);
+  background: var(--FORM_BACKGROUND);
   padding: 30px;
   border-radius: 5px;
 }
@@ -122,7 +144,7 @@ export default {
 }
 
 input,  textarea  {
-  background-color: var(--FORM_INPUT_BLUE_GRAY);
+  background-color: var(--FORM_INPUT_BACKGROUND);
   border-radius: 0.3em;
   border: 2px solid var(--FORM_BORDER_LIGHT_GRAY);
 
@@ -142,7 +164,7 @@ input,  textarea  {
 
 .msg textarea {
   height: 212px;
-  border: 2px solid var(--GREEN);
+  border: 2px solid var(--FORM_BUTTON_BACKGROUND);
 }
 
 ::-webkit-input-placeholder {
@@ -161,7 +183,7 @@ input,  textarea  {
 }
 
 .btn {
-  background: var(--GREEN);
+  background: var(--FORM_BUTTON_BACKGROUND);
   text-align: center;
   padding: 15px;
   border-radius: 5px;

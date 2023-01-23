@@ -6,9 +6,9 @@
     </div>
 
     <div id="user-info">
-      <div >Username: <span class="highlighted">{{username}}</span></div>
-      <div>DiscordTag: <span class="highlighted">{{discordTag}}</span></div>
-      <div>Discord ID: <span class="highlighted">{{discordId}}</span></div>
+      <div >Username: <span class="highlighted-first">{{username}}</span></div>
+      <div>DiscordTag: <span class="highlighted-first">{{discordTag}}</span></div>
+      <div>Discord ID: <span class="highlighted-first">{{discordId}}</span></div>
     </div>
 
     <div id="user-buttons">

@@ -9,23 +9,23 @@
     </div>
 
     <div class="user-small-content">
-      <div class="username highlighted green">
+      <div class="username highlighted-first green">
         {{username}}
       </div>
 
       <div>
-        Registration date: <span class="highlighted">{{registration}}</span>
+        Registration date: <span class="highlighted-first">{{registration}}</span>
       </div>
 
       <div>
-        Discord Tag: <span class="highlighted">{{discordTag}}</span>
+        Discord Tag: <span class="highlighted-first">{{discordTag}}</span>
       </div>
       <div>
-        Discord ID: <span class="highlighted">{{discordId}}</span>
+        Discord ID: <span class="highlighted-first">{{discordId}}</span>
       </div>
 
       <div>
-        Email: <span class="highlighted">{{email}}</span>
+        Email: <span class="highlighted-first">{{email}}</span>
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@ methods:  {
 }
 
 .user-small-profile  {
-  background-color: var(--LIGHTER_GRAY);
+  background-color: var(--FORM_BACKGROUND);
   padding: 2em;
   margin: 0.5em;
 
@@ -129,9 +129,7 @@ methods:  {
   cursor: pointer;
   filter: brightness(0.7);
 
-  box-shadow: 6px 6px 2px 1px var(--GREEN);
-
-
+  box-shadow: 6px 6px 2px 1px var(--SECONDARY_MAIN);
 }
 
 .user-small-profile:hover img  {

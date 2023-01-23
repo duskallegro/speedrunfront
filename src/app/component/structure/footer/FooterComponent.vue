@@ -14,7 +14,7 @@ name: "FooterComponent"
     bottom: 0;
    /* flex-shrink: 0;*/
 
-    background-color: var(--REAL_BRIGHT_BLUE);
+    background-color: var(--FOOTER_BACKGROUND);
     width: 100%;
 
      min-height: 10%;

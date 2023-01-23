@@ -85,7 +85,7 @@ export default {
    transform: translate(-50%, -50%);*/
   width: 100%;
   max-width: 50%;
-  background: var(--LIGHTER_GRAY);
+  background: var(--FORM_BACKGROUND);
   padding: 30px;
   border-radius: 5px;
 }
@@ -116,7 +116,7 @@ export default {
 
 
 input,  textarea  {
-  background-color: var(--FORM_INPUT_BLUE_GRAY);
+  background-color: var(--FORM_INPUT_BACKGROUND);
   border-radius: 0.3em;
   border: 2px solid var(--FORM_BORDER_LIGHT_GRAY);
 
@@ -153,7 +153,7 @@ input,  textarea  {
 }
 
 .btn {
-  background: var(--GREEN);
+  background: var(--FORM_BUTTON_BACKGROUND);
   text-align: center;
   padding: 15px;
   border-radius: 5px;

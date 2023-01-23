@@ -8,10 +8,12 @@
                   :elements="[this.$route.params.padId]"/>
 
     <div v-if="isLoaded">
-      <AppTable class="pairs-table" :table-title= "'Cards of ' + this.padName + ' Deck'"
-                :header="['#', 'Foreign Ford', 'Translation', 'Progress', 'Edit', 'Delete']"
+      <AppTable class="pairs-table" :table-title= "'header of ' + this.padName + ' table'"
+                :header="['#', 'Foreign Word', 'Translation', 'Progress', 'Edit', 'Delete']"
                 :rows="this.rows" :row-classes="rowClasses"
-                :cell-actions="this.cellActions"/>
+                :row-actions="this.rowActions"
+                :cell-actions="this.cellActions"
+      />
     </div>
 
     <div v-if="!isLoaded">
@@ -43,6 +45,7 @@ export default {
       padName: "",
 
       cellActions: [],
+      rowActions: []
 
     }
   },
@@ -76,8 +79,8 @@ export default {
         this.rows.push([i + 1, pair.foreignWord, pair.translation,  progressString, '🖊️️', '❌']);
 
         this.rowClasses.push(["", "", "", "bright-blue-text bold", "", ""]);
-        this.cellActions.push([null, null, null,
-          null, this.editCard, this.deleteCard]);
+        this.cellActions.push([this.viewCardAction, this.viewCardAction, this.viewCardAction,
+          this.viewCardAction, this.editCard, this.deleteCard]);
 
         let end = new Date();
         let elapsed = end - start; // ms
@@ -90,6 +93,8 @@ export default {
           this.isLoaded = true;
         }, 1200);*/
         this.isLoaded = true;
+
+        this.rowActions.push(this.viewCardAction);
       }
     }).catch((e) => {
       console.log(e);
@@ -99,6 +104,19 @@ export default {
 
 
   methods:  {
+    async viewCardAction(rowIndex)  {
+      console.log("viewCardAction " + rowIndex);
+
+      let padId = this.$route.params.padId;
+      let card = this.wordpairs[rowIndex];
+      console.log("viewing... " + JSON.stringify(card));
+
+      this.$router
+          .push({ path: "/user/" +  this.$route.params.username + "/deck/" + padId +
+                '/card/' + card.pairId})
+          .then(() => { this.$router.go() })
+    },
+
     async getPairsByPadId(padId)  {
       let result = await CardService.getPairsByPadId(padId);
 

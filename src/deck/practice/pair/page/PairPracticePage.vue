@@ -1,7 +1,7 @@
 <template>
   <div class="practice-pair-container">
     <div class="header-text matching-pair-header">
-      Find Matching Pairs
+      Find <span class="color-header">Matching</span> Pairs
     </div>
 
     <div class="error-message">
@@ -106,12 +106,21 @@ methods:  {
   foreignCardClicked(index)  {
     console.log('foreignCardClicked, index = ' + index);
 
+    if (this.foreignSelectedStatuses[index])  {
+      this.foreignSelectedStatuses[index] = false;
+      return;
+    }
+
     /*
      if any other foreign cards
      are selected, deselect them
      */
     this.foreignSelectedStatuses = this.foreignSelectedStatuses.map(() => false);
     this.foreignSelectedStatuses[index] = true;
+
+    // remove invalid statuses from all cards
+    this.foreignInvalidStatuses = this.foreignInvalidStatuses.map(() => false);
+    this.translationInvalidStatuses = this.translationInvalidStatuses.map(() => false);
 
     // check if there is a translation card selected
     let translationCardIndex = this.translationSelectedStatuses.findIndex((status) =>  status);
@@ -121,6 +130,10 @@ methods:  {
     if (translationCardIndex !== -1)  {
       // get the translation card
       let translationCard = this.shuffledPairs[translationCardIndex];
+      if (this.isGuessedTranslationStatuses[translationCardIndex])  {
+        return;
+      }
+
       console.log("other translation card = " + JSON.stringify(translationCard));
 
       // check if the translation matches
@@ -133,14 +146,23 @@ methods:  {
 
         let f = this.foreignHiddenStatuses;
         let t = this.translationHiddenStatuses;
-        setTimeout(function()  {
+        setTimeout(() =>  {
           console.log("hiding " + index + ", " + translationCardIndex)
           f[index] = true;
           t[translationCardIndex] = true;
+
+          // remove selection from these cards
+          this.translationSelectedStatuses[translationCardIndex] = false;
+          this.foreignSelectedStatuses[index] = false;
+
+          // remove invalid statuses from all cards
+       /*   this.foreignInvalidStatuses = this.foreignInvalidStatuses.map(() => false);
+          this.translationInvalidStatuses = this.translationInvalidStatuses.map(() => false);*/
         }, '1000');
       } else  {
         // display an error
         this.foreignInvalidStatuses[index] = true;
+        this.translationInvalidStatuses[translationCardIndex] = true;
       }
     }
   },
@@ -148,9 +170,21 @@ methods:  {
   translationCardClicked(index)  {
     console.log('translationCardClicked, index = ' + index);
 
+    // if already selected, unselect
+    if (this.translationSelectedStatuses[index])  {
+      this.translationSelectedStatuses[index] = false;
+      return;
+    }
+
+
     // remove selection from any other translation card
     this.translationSelectedStatuses = this.translationSelectedStatuses.map(() => false);
     this.translationSelectedStatuses[index] = true;
+
+
+    // remove invalid statuses from all cards
+    this.foreignInvalidStatuses = this.foreignInvalidStatuses.map(() => false);
+    this.translationInvalidStatuses = this.translationInvalidStatuses.map(() => false);
 
     // check if there is a foreign card selected
     let foreignCardIndex = this.foreignSelectedStatuses.findIndex((status) =>  status);
@@ -158,6 +192,14 @@ methods:  {
 
     // if there is a selected foreign card
     if (foreignCardIndex !== -1)  {
+      if (this.isGuessedForeignStatuses[foreignCardIndex])  {
+        return;
+      }
+
+      // remove selection from all other foreign cards
+      this.foreignSelectedStatuses = this.foreignSelectedStatuses.map(() => false);
+      this.foreignSelectedStatuses[foreignCardIndex] = true;
+
       // get the foreign card
       let foreignCard = this.practicePairs[foreignCardIndex];
       console.log("other foreignCard = " + JSON.stringify(foreignCard));
@@ -172,15 +214,26 @@ methods:  {
 
         let f = this.foreignHiddenStatuses;
         let t = this.translationHiddenStatuses;
-        setTimeout(function()  {
+
+        setTimeout(() => {
           console.log("hiding " + foreignCardIndex + ", " + index)
 
           f[foreignCardIndex] = true;
           t[index] = true;
+
+          // remove selection from these cards
+          this.translationSelectedStatuses[index] = false;
+          this.foreignSelectedStatuses[foreignCardIndex] = false;
+
+          // remove invalid statuses from all cards
+          /*this.foreignInvalidStatuses = this.foreignInvalidStatuses.map(() => false);
+          this.translationInvalidStatuses = this.translationInvalidStatuses.map(() => false);*/
         }, '1000');
       } else  {
         // display an error
+        console.log("bad translation card clicked")
         this.translationInvalidStatuses[index] = true;
+        this.foreignInvalidStatuses[foreignCardIndex] = true;
 
       }
     }
@@ -210,14 +263,18 @@ methods:  {
     margin-left: 0.2em;
     margin-right: 0.2em;
 
-    display: grid;
+    /*display: grid;
     grid-template-columns: auto auto;
-    /*grid-auto-rows: minmax(100px, auto);*/
+    !*grid-auto-rows: minmax(100px, auto);*!
 
-    column-gap: 2em;
+    column-gap: 1em;
     row-gap: 2em;
 
+    place-items: center;*/
 
+    max-width: 100%;
+    min-width: 70%;
+    width: 70%;
 
 /*
     background-color: red;
@@ -230,13 +287,42 @@ methods:  {
 /*
     background-color: green;
 */
-  }
+
+    margin: 0;
+    padding: 0;
+
+    max-width: 48%;
+    min-width: 48%;
+    width: 48%;
+
+    float: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-end;
+
+   }
 
   .right-column  {
 
 /*
     background-color: yellow;
 */
+
+    margin: 0;
+    padding: 0;
+
+    max-width: 48%;
+    min-width: 48%;
+    width: 48%;
+
+    float: right;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
   }
 
   .left-column div, .right-column div  {

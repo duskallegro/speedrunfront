@@ -12,7 +12,7 @@ export default  {
         });
     },
 
-    getCard(padId, foreign)  {
+    getCardByDeckIdAndForeign(padId, foreign)  {
         return api().get('get-pair', {params: {
                 padId: padId,
                 foreignWord: foreign

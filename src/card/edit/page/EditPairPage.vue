@@ -1,8 +1,18 @@
 <template>
-  <AppForm v-if="card !== null" :types="['text', 'text']" :placeholders="['Foreign Word', 'Translation']"
-           button-name="EDIT" :form-action="editPairAction" form-title="Edit Card"
-          :initials="[this.oldForeignWord, this.oldTranslation]"
-  />
+  <div class= "edit-page-container" v-if="this.isLoaded">
+    <EditCardForm v-if="card !== null && this.isLoaded" :types="['text', 'text']"
+             :placeholders="['Foreign Word', 'Translation']"
+             button-name="EDIT" :form-action="editCardAction" form-title="Edit Card"
+            :initials="[this.oldForeignWord, this.oldTranslation]"
+
+            examples-title="Edit Examples"
+            :initial-examples="this.card.examples"
+    />
+
+    <div v-if="!isLoaded">
+      <AppSpinner/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,11 +22,14 @@ import AppForm from "@/app/component/form/AppForm";
 import CardService from "@/app/services/CardService";
 import DeckService from "@/app/services/DeckService";
 import AuthService from "@/app/services/AuthService";
+import EditCardForm from "@/card/edit/component/EditCardForm";
+import ExampleService from "@/app/services/ExampleService";
 
 export default {
   name: "EditPairPage",
 
   "components":  {
+    EditCardForm,
     AppForm
   },
 
@@ -24,7 +37,8 @@ export default {
     return {
       oldForeignWord: "",
       oldTranslation: "",
-      card: null
+      card: null,
+      isLoaded: false
     }
   },
 
@@ -39,7 +53,23 @@ export default {
 
     this.card = card;
 
-    console.log("card = " + card);
+    // retrieve examples
+    let examples = await ExampleService.getExamplesByCardId(this.$route.params.cardId);
+    console.log("examples = " + examples);
+
+    if (examples.length > 0) {
+      this.card.examples = examples.map((example) => {
+        return {
+          example: example.example,
+          translation: example.translation
+        }
+      });
+    }  else  {
+        this.card.examples = [];
+    }
+
+    console.log("card = " + JSON.stringify(card));
+     this.isLoaded = true;
   },
 
   props:  {
@@ -49,24 +79,32 @@ export default {
    },
 
   methods: {
-    async editPairAction(models) {
-      console.log("editPairAction");
+    async editCardAction(models, examples) {
+      console.log("editCardAction");
 
       let foreign = models[0];
       let translation = models[1];
 
       console.log("foreign = " + foreign);
       console.log("translation = " + translation);
+      console.log("examples = " + examples);
 
+      // edit foreign word/translation
       let padId = this.$route.params.padId;
       let result =  await CardService.editPair(this.oldForeignWord,
               foreign, translation, padId);
       console.log(result);
 
+      // edit examples
+      let cardId = this.$route.params.cardId;
+      result = await ExampleService.setExamplesForCard(cardId, padId, examples);
+      console.log("setexamplesresult = " + result);
+
+      let username = this.$route.params.username;
       if (result)  {
         this.$router
-            .push({ path: '/user/' + AuthService.getLoggedInUser().username + '/deck/' +
-                  padId})
+            .push({ path: '/user/' + username + '/deck/' +
+                  padId + '/card/' + cardId})
             .then(() => { this.$router.go() })
       } else  {
         return result;
@@ -109,6 +147,16 @@ export default {
   font-family: 'Roboto', sans-serif;
 }
 
+.edit-page-container  {
+  width: 100%;
+/*
+  background-color: red;
+*/
+
+  display: flex;
+  justify-content: center;
+}
+
 .wrapper {
   /* position: absolute;
    top: 50%;
@@ -116,7 +164,7 @@ export default {
    transform: translate(-50%, -50%);*/
   width: 100%;
   max-width: 50%;
-  background: var(--LIGHTER_GRAY);
+  background: var(--FORM_BACKGROUND);
   padding: 30px;
   border-radius: 5px;
 }
@@ -148,7 +196,7 @@ export default {
 }
 
 input,  textarea  {
-  background-color: var(--FORM_INPUT_BLUE_GRAY);
+  background-color: var(--FORM_INPUT_BACKGROUND);
   border-radius: 0.3em;
   border: 2px solid var(--FORM_BORDER_LIGHT_GRAY);
 
@@ -168,7 +216,7 @@ input,  textarea  {
 
 .msg textarea {
   height: 212px;
-  border: 2px solid var(--GREEN);
+  border: 2px solid var(--FORM_BUTTON_BACKGROUND);
 }
 
 ::-webkit-input-placeholder {
@@ -187,7 +235,7 @@ input,  textarea  {
 }
 
 .btn {
-  background: var(--GREEN);
+  background: var(--FORM_BUTTON_BACKGROUND);
   text-align: center;
   padding: 15px;
   border-radius: 5px;

@@ -27,7 +27,181 @@ export default {
     FooterComponent,
     NavbarComponent,
     HelloWorld, HomePage
-  }
+  },
+
+  data()  {
+    return {
+      theme: "gray"
+    }
+  },
+
+  mounted: function()  {
+    this.root = document.documentElement;
+
+    if (this.theme === "gray")  {
+
+
+
+      /* Components */
+
+      this.root.style.setProperty("--BUTTON_BACKGROUND_FIRST", '#2eac68');
+      this.root.style.setProperty("--BUTTON_BACKGROUND_SECOND", '#254058');
+
+
+      this.root.style.setProperty("--BODY_BACKGROUND", '#122333');
+
+      this.root.style.setProperty("--TABLE_BACKGROUND", '#182b3c');
+      this.root.style.setProperty("--TABLE_HEADER_BACKGROUND", '#1e384e');
+      this.root.style.setProperty("--TABLE_ROW_SELECTION_BACKGROUND", '#254058');
+
+
+    }
+
+    else if (this.theme === "purple-cyan")  {
+      /* PRIMARY */
+
+      /* dark */
+
+      this.root.style.setProperty("--PRIMARY_DARK_HARD", "#080c48");
+      this.root.style.setProperty("--PRIMARY_DARK_MEDIUM", "#101450");
+      this.root.style.setProperty("--PRIMARY_DARK_EASY", "#10175e");
+      this.root.style.setProperty("--PRIMARY_DARK_FREE", "#171b55");
+
+      this.root.style.setProperty("--PRIMARY_SHADOW", "#080c45");
+
+      /* light */
+
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_HARD", "#1e276f");
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#232b73");
+      this.root.style.setProperty("--PRIMARY_LIGHT_EASY", "#2d60ee");
+
+      /* SECONDARY */
+
+      this.root.style.setProperty("--SECONDARY_DARK_HARD", "#0780e9");
+      this.root.style.setProperty("--SECONDARY_DARK_MEDIUM", "#0ebff3");
+      this.root.style.setProperty("--SECONDARY_DARK_EASY", "#50c4fb");
+
+       this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#50c4fb");
+
+      this.root.style.setProperty(" --LIGHT_FONT_COLOR", "#b1ffff");
+
+      this.root.style.setProperty(" --TERTIARY_FONT", "#b1ffff");
+
+    }
+
+    else if (this.theme === "black-purple")  {
+       /* PRIMARY */
+
+      /* dark */
+
+      this.root.style.setProperty("--PRIMARY_DARK_HARD", "#131417");
+      this.root.style.setProperty("--PRIMARY_DARK_MEDIUM", "#101450");
+      this.root.style.setProperty("--PRIMARY_DARK_EASY", "#10175e");
+      this.root.style.setProperty("--PRIMARY_DARK_FREE", "#171b55");
+
+      this.root.style.setProperty("--PRIMARY_SHADOW", "#080c45");
+
+      /* light */
+
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_HARD", "#1e276f");
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#232b73");
+      this.root.style.setProperty("--PRIMARY_LIGHT_EASY", "#2d60ee");
+
+      /* SECONDARY */
+
+      this.root.style.setProperty("--SECONDARY_DARK_HARD", "#0780e9");
+      this.root.style.setProperty("--SECONDARY_DARK_MEDIUM", "#0ebff3");
+      this.root.style.setProperty("--SECONDARY_DARK_EASY", "#50c4fb");
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#50c4fb");
+
+      this.root.style.setProperty(" --LIGHT_FONT_COLOR", "#b1ffff");
+
+      this.root.style.setProperty(" --TERTIARY_FONT", "#b1ffff");
+
+      /* Components */
+      this.root.style.setProperty("--TABLE_BACKGROUND",
+                    this.root.style.getPropertyValue('--PRIMARY_LIGHT_HARD'));
+
+    }
+
+    else if (this.theme === "purple-new")  {
+      /* PRIMARY */
+
+      /* dark */
+
+      this.root.style.setProperty("--PRIMARY_DARK_HARD", "#13073a");
+      this.root.style.setProperty("--PRIMARY_DARK_MEDIUM", "#101450");
+      this.root.style.setProperty("--PRIMARY_DARK_EASY", "#10175e");
+      this.root.style.setProperty("--PRIMARY_DARK_FREE", "#171b55");
+
+      this.root.style.setProperty("--PRIMARY_SHADOW", "#080c45");
+
+      /* light */
+
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_HARD", "#1e276f");
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#232b73");
+      this.root.style.setProperty("--PRIMARY_LIGHT_EASY", "#2d60ee");
+
+      /* SECONDARY */
+
+      this.root.style.setProperty("--SECONDARY_DARK_HARD", "#0780e9");
+      this.root.style.setProperty("--SECONDARY_DARK_MEDIUM", "#0ebff3");
+      this.root.style.setProperty("--SECONDARY_DARK_EASY", "#50c4fb");
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#50c4fb");
+
+      this.root.style.setProperty(" --LIGHT_FONT_COLOR", "#b1ffff");
+
+      this.root.style.setProperty(" --TERTIARY_FONT", "#b1ffff");
+
+
+      /* Components */
+      this.root.style.setProperty("--TABLE_BACKGROUND", '#403075');
+    }
+
+    else if (this.theme === "purple-halloween")  {
+      /* PRIMARY */
+
+      /* dark */
+
+      this.root.style.setProperty("--PRIMARY_DARK_HARD", "#1c0b4a");
+      this.root.style.setProperty("--PRIMARY_DARK_MEDIUM", "#101450");
+      this.root.style.setProperty("--PRIMARY_DARK_EASY", "#10175e");
+      this.root.style.setProperty("--PRIMARY_DARK_FREE", "#171b55");
+
+      this.root.style.setProperty("--PRIMARY_SHADOW", "#080c45");
+
+      /* light */
+
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_HARD", "#1e276f");
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#232b73");
+      this.root.style.setProperty("--PRIMARY_LIGHT_EASY", "#2d60ee");
+
+      /* SECONDARY */
+
+      this.root.style.setProperty("--SECONDARY_DARK_HARD", "#0780e9");
+      this.root.style.setProperty("--SECONDARY_DARK_MEDIUM", "#0ebff3");
+      this.root.style.setProperty("--SECONDARY_DARK_EASY", "#50c4fb");
+
+      this.root.style.setProperty("--PRIMARY_LIGHT_MEDIUM", "#50c4fb");
+
+      this.root.style.setProperty(" --LIGHT_FONT_COLOR", "#b1ffff");
+
+      this.root.style.setProperty(" --TERTIARY_FONT", "#b1ffff");
+
+      this.root.style.setProperty('--TERTIARY_DARK_HARD', '#50c4fb');
+      /* Components */
+      this.root.style.setProperty("--TABLE_BACKGROUND", '#371381');
+    }
+
+  },
+
+
 }
 </script>
 
@@ -105,7 +279,7 @@ body  {
 */
    min-height: 100%;
 
-  background-color: var(--DARK_GRAY);
+  background-color: var(--BODY_BACKGROUND);
   color: var(--LIGHT_FONT_COLOR) !important;
 /*
   background-color: red;
@@ -141,13 +315,13 @@ body  {
 
 }
 
-.highlighted  {
-  color: var(--YELLOW);
+.highlighted-first  {
+  color: var(--TERTIARY_MAIN);
   font-weight: bold;
 }
 
 .green  {
-  color: var(--GREEN);
+  color: var(--SECONDARY_DARK_MEDIUM);
 }
 
 .header-text  {
@@ -156,7 +330,7 @@ body  {
 }
 
 .error-message  {
-  color: var(--REAL_BRIGHT_BLUE);
+  color: var(--ERROR_MESSAGE_COLOR);
   font-weight: bold;
 
   text-align: center;
@@ -167,11 +341,17 @@ body  {
 }
 
 .bright-blue  {
-  background-color: var(--REAL_BRIGHT_BLUE) !important;
+  background-color: var(--BUTTON_BACKGROUND_THIRD) !important;
 }
 
 .bright-blue-text  {
-  color: var(--REAL_BRIGHT_BLUE) !important;
+  color: var(--BUTTON_BACKGROUND_THIRD) !important;
+}
+
+.color-header  {
+  color: var(--TERTIARY_MAIN);
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 

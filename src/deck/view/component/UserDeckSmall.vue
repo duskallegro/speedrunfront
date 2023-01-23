@@ -17,7 +17,7 @@ name: "UserDeckSmall",
 <style scoped>
 
 .user-pad-small  {
-  background-color: var(--LIGHTER_GRAY);
+  background-color: var(--PRIMARY_DARK_MEDIUM);
   margin: 1em;
   padding: 1em;
 }

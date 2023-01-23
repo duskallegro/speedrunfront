@@ -46,9 +46,9 @@ export default {
 
 <style scoped>
   .navbar-button  {
-    background-color: var(--GREEN);
+    background-color: var(--BUTTON_BACKGROUND_FIRST);
 
-    border-radius: 0.1em;
+    border-radius: 1.2em;
     padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
@@ -57,21 +57,26 @@ export default {
 
     margin-left: 1em;
 
-    color: var(--LIGHT_FONT_COLOR);
+    color: var(--TERTIARY_FONT);
+
+
+    font-size: 1.5em;
   }
 
   .navbar-button:hover  {
     cursor: pointer;
     filter: brightness(1.2);
    }
+/*
 
   .navbar-button.blue  {
-    background-color: var(--LIGHTER_BLUE_GRAY);
+    background-color: var(--LIGHTER_BLUE_GRAY); // it's the selected table row background
   }
 
   .navbar-button.dim-blue  {
-    background-color: var(--REAL_DIM_BLUE);
+    background-color: var(--REAL_DIM_BLUE);#315d89
   }
+*/
 
     @media screen and (max-width: 1300px) {
       .navbar-button  {
