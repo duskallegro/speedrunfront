@@ -7,6 +7,23 @@
 
 
       <div class="card-for-practice-container">
+        <div class="rate-card"
+             v-on:click.stop="rateAndNext"
+             :class="this.showRates ? 'visible-rates' : 'invisible-rates'"
+        >
+          <div class="red-light">
+            <span v-if="this.showRates">🙁</span>
+          </div>
+
+          <div class="yellow-light">
+            <span v-if="this.showRates">🤔</span>
+          </div>
+
+          <div class="green-light">
+            <span v-if="this.showRates">😎</span>
+          </div>
+        </div>
+
         <CardGuessComponent :foreignWord="this.currentCard.foreignWord"
               :translation="this.currentCard.translation"
               :examples = "this.currentCard.examples"
@@ -21,7 +38,7 @@
 
 
 
-      <div class="rate-card"
+<!--      <div class="rate-card"
            v-on:click.stop="rateAndNext"
            :class="this.showRates ? 'visible-rates' : 'invisible-rates'"
       >
@@ -36,7 +53,7 @@
         <div class="green-light">
           <span v-if="this.showRates">😎</span>
         </div>
-      </div>
+      </div>-->
 
     </div>
 
@@ -161,15 +178,17 @@ export default {
   background-color: yellow;
 */
   min-width: 100%;
-
-  min-height: 80%;
+/*
+  min-height: 80%;*/
 /*
   height: 80%;
 */
 
-  min-height: 40%;
-  max-height: 40vh;
+/*  min-height: 40%;
+  max-height: 40vh;*/
+/*
   overflow: hidden;
+*/
 }
 
 .guess-practice-container  {
@@ -181,11 +200,12 @@ export default {
 
   min-height: 40%;
   height: 40%;
-  max-height: 40%;
+  /*max-height: 40%;*/
 
-    min-height: 150px;
-  height: 150px;
-}
+   /* min-height: 150px;
+  height: 150px;*/
+
+ }
 
 .inner-outer  {
   min-width: 100%;
@@ -194,6 +214,7 @@ export default {
   min-height: 100%;
   max-height: 100%;
   height: 100%;
+
 
 
 /*
@@ -210,9 +231,11 @@ export default {
 
   min-height: 50%;
   height: 50%;
+
+  border-radius: 1em !important;
 }
 
-.rate-card  {
+/*.rate-card  {
   position: absolute;
   bottom: 0;
   left: 10vw;
@@ -225,7 +248,7 @@ export default {
 
   margin-top: 10vh;
 
-}
+}*/
 
 
 .rate-card div  {
@@ -281,9 +304,9 @@ export default {
 
       min-width: 70%;
       max-width: 70%;
-
+/*
       min-height: 150px;
-      height: 150px;
+      height: 150px;*/
   }
 
   .guess-header  {
@@ -297,9 +320,9 @@ export default {
 
     min-width: 80%;
     max-width: 80%;
-
+/*
     min-height: 150px;
-    height: 150px;
+    height: 150px;*/
   }
 
 
@@ -314,9 +337,9 @@ export default {
 
     min-width: 90%;
     max-width: 90%;
-
+/*
     min-height: 150px;
-    height: 150px;
+    height: 150px;*/
   }
 
   .guess-header  {
@@ -330,9 +353,11 @@ export default {
 
     min-width: 92%;
     max-width: 92%;
-
+/*
     min-height: 150px;
-    height: 150px;
+    height: 150px;*/
+
+    max-height: 100%;
   }
 
   .guess-header  {

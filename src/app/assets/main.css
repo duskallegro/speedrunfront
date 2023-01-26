@@ -44,6 +44,7 @@
 
     --QUATERNARY_DARK_HARD: red;
     --QUATERNARY_MAIN: #0e6db4;
+    --QUATERNARY_DARK_EASY: #1080d5;
 
 
     /* Blue */
@@ -121,8 +122,9 @@
     --CARD_EXAMPLE_HEADER_COLOR: var(--TITLE_COLOR_ONE);
     --CARD_PAIR_MATCH_TRANSLATION_BACKGROUND: #366087;
 
+
 }
 
 body  {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }

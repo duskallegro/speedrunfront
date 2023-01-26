@@ -64,4 +64,66 @@ name: "SelectGuessPracticeMode",
 
   justify-content: center;
 }
+
+/* Media */
+
+
+@media screen and (max-width: 800px) {
+
+  .select-outer-container   {
+    width: 92%;
+  }
+
+  .select-inner-container  {
+    width: 100%;
+  }
+
+  .practice-mode-container  {
+    width: 30%;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .select-inner-container  {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .practice-mode-container  {
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .practice-mode-container  {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .practice-mode-container  {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .practice-mode-container  {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 220px) {
+  .practice-mode-container  {
+    width: 92%;
+    font-size: smaller;
+  }
+}
 </style>

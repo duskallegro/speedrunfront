@@ -128,6 +128,8 @@ methods:  {
   background: var(--FORM_BACKGROUND);
   padding: 30px;
   border-radius: 5px;
+
+  margin-top: 2em;
 }
 
 .wrapper .title h1 {
@@ -239,8 +241,9 @@ input,  textarea  {
 @media screen and (max-width: 1000px) {
   .wrapper {
     max-width: 70%;
-  }
+   }
 }
+
 
 @media screen and (min-width: 1000px) {
   .wrapper {
@@ -288,4 +291,44 @@ input,  textarea  {
     flex-direction: row;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    max-width: 80% !important;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    max-width: 85% !important;
+
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    max-width: 90% !important;
+
+  }
+
+  .btn  {
+    font-size: 0.8em;
+   }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    max-width: 92% !important;
+
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .wrapper {
+    max-width: 95% !important;
+
+  }
+}
+
 </style>

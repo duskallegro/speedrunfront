@@ -44,15 +44,15 @@ export default {
         case "DUPLICATE_EMAIL":
           return "Duplicate Email";
         case "SUCCESS":
-          res = await UserService.normalLogin(this.username, this.password);
+          res = await UserService.normalLogin(username, password);
           console.log("result: " + res);
           console.log(JSON.stringify(res));
 
-          user =  JSON.stringify(await UserService.getUserByUsername(this.username));
+          user =  JSON.stringify(await UserService.getUserByUsername(username));
           AuthService.login(user);
 
           this.$router
-              .push({ path: '/home' })
+              .push({ path: '/' })
               .then(() => { this.$router.go() })
           return "";
         default:

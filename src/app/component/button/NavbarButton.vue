@@ -58,9 +58,11 @@ export default {
     margin-left: 1em;
 
     color: var(--TERTIARY_FONT);
-
+    color: #c3efd7;
 
     font-size: 1.5em;
+
+    text-align: center;
   }
 
   .navbar-button:hover  {
@@ -78,7 +80,7 @@ export default {
   }
 */
 
-    @media screen and (max-width: 1300px) {
+  /*  @media screen and (max-width: 1300px) {
       .navbar-button  {
         padding: 0.5em;
         margin: 0.5em !important;
@@ -102,5 +104,5 @@ export default {
 
       font-size: 1em !important;
     }
-  }
+  }*/
 </style>

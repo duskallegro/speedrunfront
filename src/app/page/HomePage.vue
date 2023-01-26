@@ -28,7 +28,7 @@ export default {
 }
 
   .character-one  {
-    margin-top: 20vh;
+    margin-top: 12vh;
 
     display: flex;
     flex-direction: column;
@@ -37,6 +37,10 @@ export default {
 
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 2s infinite  alternate;
+
+    height: 100vh;
+    position: fixed;
+
   }
 
   @-webkit-keyframes mover {
@@ -47,4 +51,10 @@ export default {
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
   }
+
+@media screen and (max-width: 1300px) {
+  .character-one {
+    margin-top: 0;
+  }
+}
 </style>

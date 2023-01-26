@@ -55,6 +55,12 @@ export default {
       this.root.style.setProperty("--TABLE_ROW_SELECTION_BACKGROUND", '#254058');
 
 
+
+      this.root.style.setProperty("--TABLE_TEXT_COLOR", '#adc1d1');
+/*
+       this.root.style.setProperty("--TABLE_BACKGROUND", 'var(--PRIMARY_LIGHT_HARD)');
+*/
+
     }
 
     else if (this.theme === "purple-cyan")  {
@@ -284,7 +290,7 @@ body  {
 /*
   background-color: red;
 */
-}
+ }
 
 #content-component  {
   display: flex;
@@ -316,8 +322,15 @@ body  {
 }
 
 .highlighted-first  {
-  color: var(--TERTIARY_MAIN);
+  color: var(--TERTIARY_MAIN) !important;
+/*
   font-weight: bold;
+*/
+}
+
+.highlighted-second  {
+  color: var(--SECONDARY_MAIN) !important;
+
 }
 
 .green  {
@@ -341,12 +354,24 @@ body  {
 }
 
 .bright-blue  {
+/*
   background-color: var(--BUTTON_BACKGROUND_THIRD) !important;
+*/
+  background-color: var(--QUATERNARY_MAIN) !important;
+
+
 }
 
 .bright-blue-text  {
+/*
   color: var(--BUTTON_BACKGROUND_THIRD) !important;
-}
+*/
+  color: var(--QUATERNARY_MAIN) !important;
+ }
+
+.very-bright-blue-text  {
+   color: var(--QUATERNARY_DARK_EASY) !important;
+ }
 
 .color-header  {
   color: var(--TERTIARY_MAIN);

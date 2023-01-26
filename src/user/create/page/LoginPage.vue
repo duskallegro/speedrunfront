@@ -32,7 +32,7 @@ export default {
             AuthService.login(user);
 
             this.$router
-                .push({ path: '/home' })
+                .push({ path: '/' })
                 .then(() => { this.$router.go() })
           break;
         case "INVALID_CREDENTIALS":

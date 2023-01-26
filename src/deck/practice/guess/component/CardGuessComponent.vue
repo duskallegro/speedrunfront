@@ -144,6 +144,15 @@ methods:  {
 
     min-height: 100%;
      height: 100%;
+
+    border-radius: 1em;
+
+    border: 3px solid var(--TERTIARY_MAIN);
+    border-bottom: 5px solid #a16a12;
+    border-left: 3px solid #cf8817;
+
+    margin-top: 1em;
+    margin-bottom: 2em;
   }
 
   .card-full-container:hover  {

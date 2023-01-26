@@ -192,8 +192,9 @@ created() {
 
   text-align: left;
   color: var(--TABLE_TEXT_COLOR);
+   cursor: pointer;
 
-  cursor: pointer;
+  overflow-wrap: break-word;
 }
 
 .app-table th  {
@@ -214,5 +215,33 @@ created() {
 
 .app-table tr td:last-child {
   border-right: 0;
+}
+
+@media (max-width: 1200px) {
+  .app-table th, td  {
+    padding: 0.5em;
+  }
+
+  .table-wrapper {
+    padding: 1.5em;
+  }
+
+  .app-table  {
+    padding: 1.5em;
+   }
+}
+
+@media (max-width: 850px) {
+  .app-table th, td  {
+    padding: 0.5em;
+  }
+
+  .table-wrapper {
+    padding: 0.5em;
+  }
+
+  .app-table  {
+    padding: 0.5em;
+  }
 }
 </style>

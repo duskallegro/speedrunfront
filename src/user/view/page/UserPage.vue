@@ -5,13 +5,13 @@
         {{username}}
     </div>
 
-    <div id="user-info">
+<!--    <div id="user-info">
       <div >Username: <span class="highlighted-first">{{username}}</span></div>
       <div>DiscordTag: <span class="highlighted-first">{{discordTag}}</span></div>
       <div>Discord ID: <span class="highlighted-first">{{discordId}}</span></div>
-    </div>
+    </div>-->
 
-    <div id="user-buttons">
+    <div id="user-buttons" v-if="this.canDisplayAddButton()">
       <NavbarButton text="Add Deck" link="add-deck"/>
     </div>
 
@@ -21,6 +21,8 @@
               :row-actions="this.rowActions"
               :header-actions="this.headerActions"/>
     </div>
+
+    <DecksOfUserMobile :decks="this.pads" :actions="this.rowActions" v-if="isLoaded"/>
 
     <div v-if="!isLoaded">
       <AppSpinner/>
@@ -38,10 +40,12 @@ import LanguageService from "@/app/services/LanguageService";
 import CardService from "@/app/services/CardService";
 import AppTable from "@/app/component/table/AppTable";
 import AppSpinner from "@/app/component/spinner/AppSpinner";
+import DecksOfUserMobile from "@/user/view/component/DecksOfUserMobile";
+import AuthService from "@/app/services/AuthService";
 
 export default {
   name: "UserPage",
-  components: {AppTable, NavbarButton, UserDeckSmall, LanguageService,CardService, AppSpinner},
+  components: {DecksOfUserMobile, AppTable, NavbarButton, UserDeckSmall, LanguageService,CardService, AppSpinner},
   props:  {
       username: String,
     },
@@ -86,9 +90,11 @@ export default {
           let progressString = new Intl.NumberFormat('en-IN', {
             maximumFractionDigits: 2
           }).format(100 * pad.progress) + "%";
+          this.pads[i].progressString = progressString;
+
           this.rows.push([i + 1, pad.name, pad.foreignLang, pad.translationLang,
             pad.count, progressString]);
-          this.rowClasses.push(["", "", "capitalize", "capitalize", "", "bright-blue-text bold"]);
+          this.rowClasses.push(["", "", "capitalize", "capitalize", "", "very-bright-blue-text bold"]);
 
           this.cellActions.push([this.viewPadAction, this.viewPadAction, this.viewPadAction,
             this.viewPadAction, this.viewPadAction, this.viewPadAction]);
@@ -107,6 +113,10 @@ export default {
     },
 
     methods:  {
+      canDisplayAddButton()  {
+        return AuthService.canAddDeck(this.$route.params.username);
+      },
+
       async viewPadAction(rowIndex)  {
         let pad = this.pads[rowIndex];
 
@@ -156,7 +166,7 @@ export default {
   align-items: center;
   align-content: center;
 
-
+  width: 80%;
  }
 
 #user-info  {
@@ -188,5 +198,89 @@ export default {
   margin: 2em;
 }
 
+
+/* Mobile decks */
+
+@media (min-width: 1100px) {
+  #decks-of-user-mobile-container  {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1100px) {
+  #user-pads-container {
+    display: none;
+  }
+
+  #decks-of-user-mobile-container  {
+    display: revert;
+    width: 60%;
+  }
+
+  .user-page  {
+    width: 90%;
+  }
+}
+
+
+@media screen and (max-width: 300px) {
+
+  #decks-of-user-mobile-container  {
+    width: 70%;
+  }
+
+  .user-page  {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  .user-page  {
+    width: 100%;
+  }
+
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+
+  #decks-of-user-mobile-container  {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+
+  #decks-of-user-mobile-container  {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+  #decks-of-user-mobile-container  {
+    width: 85%;
+  }
+
+  .user-page  {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  #decks-of-user-mobile-container  {
+    width: 85%;
+  }
+
+  .user-page  {
+    width: 95%;
+  }
+}
 
 </style>

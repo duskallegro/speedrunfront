@@ -54,6 +54,12 @@ data()  {
     border-radius: 1em;
 
     background-color: var(--CARD_BACKGROUND);
+/*
+    background: linear-gradient(45deg, rgba(36,64,90,1) 33%, rgba(51,91,128,1) 89%, rgba(65,116,164,1) 100%);
+*/
+/*
+    background-color: var(--CARD_PAIR_MATCH_TRANSLATION_BACKGROUND);
+*/
 
     padding: 2em;
 
@@ -65,6 +71,13 @@ data()  {
     cursor: pointer;
 
     min-width: 50%;
+
+    border: 3px solid var(--TERTIARY_MAIN);
+    border-bottom: 5px solid #a16a12;
+    border-left: 3px solid #cf8817;
+
+    box-shadow: 0px 0px 3px 3px #070d13;
+
   }
 
   .card-full-translation-outside  {
@@ -103,4 +116,9 @@ data()  {
   .example-container  {
     margin-bottom: 1em;
   }
+
+  /* Media */
+
+
+
 </style>

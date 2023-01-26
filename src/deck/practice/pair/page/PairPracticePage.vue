@@ -276,6 +276,10 @@ methods:  {
     min-width: 70%;
     width: 70%;
 
+    max-width: 55%;
+    min-width: 55%;
+    width: 55%;
+
 /*
     background-color: red;
 */
@@ -291,9 +295,9 @@ methods:  {
     margin: 0;
     padding: 0;
 
-    max-width: 48%;
-    min-width: 48%;
-    width: 48%;
+    max-width: 46%;
+    min-width: 46%;
+    width: 46%;
 
     float: left;
 
@@ -302,6 +306,7 @@ methods:  {
     justify-content: start;
     align-items: flex-end;
 
+    align-items: center;
    }
 
   .right-column  {
@@ -313,9 +318,9 @@ methods:  {
     margin: 0;
     padding: 0;
 
-    max-width: 48%;
-    min-width: 48%;
-    width: 48%;
+    max-width: 46%;
+    min-width: 46%;
+    width: 46%;
 
     float: right;
 
@@ -323,6 +328,10 @@ methods:  {
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
+
+
+    align-items: center;
+
   }
 
   .left-column div, .right-column div  {
@@ -353,12 +362,18 @@ methods:  {
     }
 
     .pair-container  {
-      min-width: 70%;
-      max-width: 70%;
+     /* min-width: 30%;
+      max-width: 30%;
+*/
 
       column-gap: 1.5em;
       margin-left: 2em;
       margin-right: 2em;
+
+      max-width: 65%;
+      min-width: 65%;
+      width: 65%;
+
     }
 
     .matching-pair-header {
@@ -367,7 +382,32 @@ methods:  {
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1200px) {
+    .pair-container  {
+      max-width: 75%;
+      min-width: 75%;
+      width: 75%;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    .pair-container  {
+      max-width: 85%;
+      min-width: 85%;
+      width: 85%;
+    }
+  }
+
+
+  @media screen and (max-width: 1000px) {
+    .pair-container  {
+      max-width: 90%;
+      min-width: 90%;
+      width: 90%;
+    }
+  }
+
+    @media screen and (max-width: 600px) {
     .practice-pair-container {
 /*
       background-color: silver;
@@ -381,8 +421,9 @@ methods:  {
       background-color: purple;
 */
 
-      min-width: 80%;
-      max-width: 80%;
+      max-width: 92%;
+      min-width: 92%;
+      width: 92%;
 
       column-gap: 0.5em;
 
@@ -413,8 +454,9 @@ methods:  {
     }
 
     .pair-container  {
-      min-width: 100%;
-      max-width: 100%;
+      min-width: 97%;
+      max-width: 97%;
+      width: 97%;
 
       column-gap: 0.2em !important;
       row-gap: 0em;
@@ -425,10 +467,18 @@ methods:  {
 /*
       background-color: yellow;
 */
+
+
     }
 
     .matching-pair-header{
       font-size: 0.9em;
+    }
+
+    .left-column, .right-column  {
+      max-width: 47%;
+      min-width: 47%;
+      width: 47%;
     }
   }
 
@@ -448,8 +498,8 @@ methods:  {
     }
 
     .pair-container  {
-      min-width: 100%;
-      max-width: 100%;
+      min-width: 98%;
+      max-width: 98%;
 
       column-gap: 0.1em !important;
       row-gap: 0em;

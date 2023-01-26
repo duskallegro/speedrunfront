@@ -51,4 +51,33 @@ async beforeCreate() {
   .card-container  {
     min-width: 400px;
   }
+
+  @media screen and (max-width: 700px) {
+    .card-container  {
+      width: 70% !important;
+      min-width: 70%;
+
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .card-container  {
+      width: 80%;
+      min-width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .card-container  {
+      width: 85%;
+      min-width: 85%;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .card-container  {
+      width: 90%;
+      min-width: 90%;
+    }
+  }
 </style>

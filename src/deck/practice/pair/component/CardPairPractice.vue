@@ -119,10 +119,11 @@ methods:  {
 
     border: 2px solid transparent;
 
-    max-width: 50%;
-    min-width: 50%;
-    width: 50%;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
 
+    overflow-wrap: break-word !important;
    }
 
   .translation  {
@@ -137,11 +138,13 @@ methods:  {
   @media screen and (max-width: 1300px) {
      .card-pair-practice  {
 
+
      }
   }
 
   @media screen and (max-width: 600px) {
     .card-pair-practice  {
+
 
     }
   }
@@ -149,6 +152,8 @@ methods:  {
 
   @media screen and (max-width: 400px) {
     .card-pair-practice  {
+
+
       /*   background-color: red;*/
       font-size: 0.9em !important;
 
@@ -166,10 +171,10 @@ methods:  {
       font-size: 0.8em !important;
 
 
-      margin: 0.4em !important;
-      padding: 0em !important;
+      margin: 0.2em !important;
+      padding: 0.2em !important;
 
     }
-
   }
+
 </style>

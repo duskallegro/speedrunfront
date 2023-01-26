@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/app/page/HomePage';
 import AllUsersPage from '@/user/view/page/AllUsersPage';
 import UserPage from '@/user/view/page/UserPage';
-import DeckOfUserPage from '@/deck/view/page/DeckOfUserPage';
 import DecksOfUserPage from '@/deck/view/page/DecksOfUserPage';
 import CardsOfDeckPage from '@/card/view/page/CardsOfDeckPage';
 import CreateAccountPage from '@/user/create/page/CreateAccountPage';

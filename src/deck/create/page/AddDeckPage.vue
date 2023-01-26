@@ -54,6 +54,9 @@ export default {
         case "EMPTY_USER_ID":
           return "";
         default:
+          this.$router
+              .push({ path: "/user/" + AuthService.getLoggedInUser().username})
+              .then(() => { this.$router.go() })
           return result;
       }
     }

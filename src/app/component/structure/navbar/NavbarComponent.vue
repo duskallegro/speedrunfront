@@ -13,7 +13,7 @@
       <div class="line"></div>
     </div>
     <div id="navbar-buttons">
-      <NavbarButton text="Users" color="green" link="users"/>
+<!--      <NavbarButton text="Users" color="green" link="users"/>-->
 
       <NavbarButton v-if="!isLoggedIn"
                    emoji="🥳" color = "dim-blue" text="Create Account" link="create-account"/>
@@ -63,10 +63,11 @@ name: "NavbarComponent",
     },
 
     async logoutAction() {
-      console.log("logoutAction");
-      AuthService.logout();
-      this.$router.go({name: "/"});
-
+        console.log("logoutAction");
+        await AuthService.logout();
+      this.$router
+          .push({ path: '/'})
+          .then(() => { this.$router.go() })
     },
 
     async profileAction() {
@@ -125,7 +126,8 @@ name: "NavbarComponent",
   overflow: hidden;
 
   background-color: var(--BODY_BACKGROUND);
- }
+
+  }
 
 #navbar:hover  {
   cursor: pointer;
@@ -240,6 +242,37 @@ name: "NavbarComponent",
   }
   .navbar-button.fade {
     opacity: 1;
+
+  }
+
+  /* for buttons */
+
+  #navbar-buttons.button:nth-child(1) {
+    transition: all 0.2s ease 0.1s;
+  }
+  #navbar-buttons.button:nth-child(2) {
+    transition: all 0.2s ease 0.2s;
+  }
+  #navbar-buttons.button:nth-child(3) {
+    transition: all 0.2s ease 0.3s;
+  }
+
+  #navbar-buttons.button:nth-child(4) {
+    transition: all 0.2s ease 0.4s;
+  }
+  .button.fade {
+    opacity: 1;
+
+
+   }
+
+  .button  {
+    margin-left: 0 !important;
+
+  }
+
+  .navbar-button  {
+    margin-left: 0 !important;
 
   }
 }

@@ -43,6 +43,9 @@ props:  {
    color: var(--TERTIARY_FONT);
   font-size: 1.5em;
 
+  text-align: center;
+
+
 }
 
 .button:hover  {
