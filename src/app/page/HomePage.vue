@@ -28,7 +28,9 @@ export default {
 }
 
   .character-one  {
+/*
     margin-top: 12vh;
+*/
 
     display: flex;
     flex-direction: column;
@@ -38,7 +40,9 @@ export default {
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 2s infinite  alternate;
 
-    height: 100vh;
+/*
+    height: 80vh;
+*/
     position: fixed;
 
   }

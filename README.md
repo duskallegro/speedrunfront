@@ -1,4 +1,4 @@
-# speedrunfront
+# WordKick
 
 ## Project setup
 ```
