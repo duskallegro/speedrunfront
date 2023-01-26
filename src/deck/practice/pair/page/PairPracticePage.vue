@@ -435,6 +435,14 @@ methods:  {
     .matching-pair-header {
       font-size: 1.5em;
     }
+
+    .left-column  {
+      margin-left: 0.2em;
+    }
+
+    .right-column  {
+      margin-right: 0.2em;
+    }
   }
 
 
@@ -461,8 +469,8 @@ methods:  {
       column-gap: 0.2em !important;
       row-gap: 0em;
 
-      margin-left: 0.5em !important;
-      margin-right: 0.5em !important;
+      margin-left: 0.3em !important;
+      margin-right: 0.3em !important;
 
 /*
       background-color: yellow;
@@ -479,6 +487,14 @@ methods:  {
       max-width: 47%;
       min-width: 47%;
       width: 47%;
+    }
+
+    .left-column  {
+      margin-left: 0.1em;
+    }
+
+    .right-column  {
+      margin-right: 0.1em;
     }
   }
 
@@ -514,6 +530,15 @@ methods:  {
 
     .matching-pair-header{
       font-size: 0.9em;
+    }
+
+
+    .left-column  {
+      margin-left: 0em;
+    }
+
+    .right-column  {
+      margin-right: 0em;
     }
   }
 </style>
