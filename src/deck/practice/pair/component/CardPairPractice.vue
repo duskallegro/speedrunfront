@@ -145,6 +145,7 @@ methods:  {
   @media screen and (max-width: 600px) {
     .card-pair-practice  {
 
+      min-height: 3em;
 
     }
   }
@@ -154,13 +155,18 @@ methods:  {
     .card-pair-practice  {
 
 
-      /*   background-color: red;*/
+/*
+         background-color: red;
+*/
+/*
       font-size: 0.9em !important;
+*/
 
 
       margin: 0.5em !important;
       padding: 0em !important;
 
+      min-height: 4em;
     }
   }
 
@@ -168,7 +174,9 @@ methods:  {
   @media screen and (max-width: 300px) {
     .card-pair-practice  {
    /*   background-color: red;*/
+/*
       font-size: 0.8em !important;
+*/
 
 
       margin: 0.2em !important;

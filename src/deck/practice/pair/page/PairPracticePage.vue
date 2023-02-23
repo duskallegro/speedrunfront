@@ -1,7 +1,15 @@
 <template>
   <div class="practice-pair-container">
     <div class="header-text matching-pair-header">
-      Find <span class="color-header">Matching</span> Pairs
+      <div>
+        Find <span class="color-header">Matching</span> Pairs
+      </div>
+
+      <div :class="'timer  ' + (finishedGuessing ? ' green' : '')" >{{timerValue()}}</div>
+    </div>
+
+    <div v-if="finishedGuessing" id="play-again-button-pairs">
+      <AppButton text="PLAY AGAIN" :action="this.startGame"/>
     </div>
 
     <div class="error-message">
@@ -47,10 +55,11 @@
 import PracticeService from "@/app/services/PracticeService";
 import UserService from "@/app/services/UserService";
 import CardPairPractice from "@/deck/practice/pair/component/CardPairPractice";
+import AppButton from "@/app/component/button/AppButton";
 
 export default {
 name: "PairPracticePage",
-  components: {CardPairPractice},
+  components: {AppButton, CardPairPractice},
   props: {
   padId: Number,
   username: String
@@ -75,34 +84,69 @@ data() {
     foreignHiddenStatuses: [],
     translationHiddenStatuses: [],
 
+    milliseconds: 0,
+
+    pairsGuessed: 0,
+    finishedSeconds: 0,
   }
 },
 
 async beforeCreate() {
-  let userId = await UserService.getUserByUsername(this.username);
+ },
 
-  let result = await PracticeService.getPracticePairs(this.padId, userId);
+async created()  {
+  console.log("created");
+  await this.startGame();
 
-  this.practicePairs = result.practicePairs;
-  this.shuffledPairs = result.shuffledPairs;
+    setInterval(  ()  => {
+      if (!this.finishedGuessing) {
+        this.milliseconds++;
+      }
+  });
 
-  console.log(this.practicePairs);
-  console.log(this.shuffledPairs);
 
-  this.foreignSelectedStatuses = this.practicePairs.map((p) => false);
-  this.translationSelectedStatuses = this.shuffledPairs.map((p) => false);
+},
 
-  this.isGuessedForeignStatuses = this.practicePairs.map((p) => false);
-  this.isGuessedTranslationStatuses = this.shuffledPairs.map((p) => false);
-
-  this.foreignInvalidStatuses = this.practicePairs.map((p) => false);
-  this.translationInvalidStatuses = this.shuffledPairs.map((p) => false);
-
-  this.foreignHiddenStatuses = this.practicePairs.map((p) => false);
-  this.translationHiddenStatuses = this.shuffledPairs.map((p) => false);
+computed:  {
+  finishedGuessing: function()  {
+    return this.pairsGuessed >= this.shuffledPairs.length;
+  }
 },
 
 methods:  {
+  startGame: async function()  {
+    console.log("startGame");
+
+    this.errorMessage = "";
+
+    this.pairsGuessed = 0;
+
+    // resetting the timer
+    this.milliseconds = 0;
+
+    let userId = await UserService.getUserByUsername(this.username);
+
+    let result = await PracticeService.getPracticePairs(this.padId, userId);
+
+    this.practicePairs = result.practicePairs;
+    this.shuffledPairs = result.shuffledPairs;
+
+    console.log(this.practicePairs);
+    console.log(this.shuffledPairs);
+
+    this.foreignSelectedStatuses = this.practicePairs.map((p) => false);
+    this.translationSelectedStatuses = this.shuffledPairs.map((p) => false);
+
+    this.isGuessedForeignStatuses = this.practicePairs.map((p) => false);
+    this.isGuessedTranslationStatuses = this.shuffledPairs.map((p) => false);
+
+    this.foreignInvalidStatuses = this.practicePairs.map((p) => false);
+    this.translationInvalidStatuses = this.shuffledPairs.map((p) => false);
+
+    this.foreignHiddenStatuses = this.practicePairs.map((p) => false);
+    this.translationHiddenStatuses = this.shuffledPairs.map((p) => false);
+  },
+
   foreignCardClicked(index)  {
     console.log('foreignCardClicked, index = ' + index);
 
@@ -146,6 +190,8 @@ methods:  {
 
         let f = this.foreignHiddenStatuses;
         let t = this.translationHiddenStatuses;
+
+        this.pairsGuessed++;
         setTimeout(() =>  {
           console.log("hiding " + index + ", " + translationCardIndex)
           f[index] = true;
@@ -215,6 +261,7 @@ methods:  {
         let f = this.foreignHiddenStatuses;
         let t = this.translationHiddenStatuses;
 
+        this.pairsGuessed++;
         setTimeout(() => {
           console.log("hiding " + foreignCardIndex + ", " + index)
 
@@ -237,6 +284,37 @@ methods:  {
 
       }
     }
+  },
+
+  duration(millisecondsData) {
+    let milliseconds = millisecondsData % 1000;
+    millisecondsData = (millisecondsData - milliseconds) / 1000;
+
+    let seconds = millisecondsData % 60;
+    millisecondsData = (millisecondsData - seconds) / 60;
+
+    let minutes = millisecondsData % 60;
+    let hours = (millisecondsData - minutes) / 60;
+
+    return [
+      this.format(hours),
+      this.format(minutes ),
+      this.format(seconds ),
+      this.format(milliseconds)
+    ].join(':');
+  },
+
+  format(n) {
+    return (~~n).toString().padStart(2, '0')
+  },
+
+  timerValue: function()  {
+    if (this.finishedGuessing)  {
+      return this.duration(this.milliseconds);
+    }
+
+    this.finishedSeconds = JSON.parse(JSON.stringify(this.milliseconds));
+    return this.duration(this.finishedSeconds);
   }
 }
 
@@ -244,6 +322,12 @@ methods:  {
 </script>
 
 <style scoped>
+  #play-again-button-pairs  {
+    margin-top: 2em;
+  }
+
+
+
   .practice-pair-container  {
     margin: 0;
     width: 90%;
@@ -346,7 +430,10 @@ methods:  {
   .matching-pair-header  {
     display: flex;
     justify-content: center;
-   }
+    align-items: start;
+
+    flex-direction: column;
+  }
 
 
   /* Media */

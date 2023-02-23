@@ -1,23 +1,24 @@
 <template>
-  <div v-on:hidden="hiddenEvent">
+  <div>
 
-    <TestComponent v-on:hidden="hiddenEvent"></TestComponent>
-  </div>
+   </div>
 </template>
 
 <script>
 
-import TestComponent from "@/app/test/TestComponent";
-export default {
+ export default {
   name: "TestPage",
-  components: {TestComponent},
+  components: { },
 
+   async beforeCreate() {
+     await this.startGame();
+   },
 
-  methods:  {
-    hiddenEvent()  {
-      console.log("hiddenEvent");
-    }
-  }
+   methods: {
+     startGame: async function () {
+       console.log("start game!");
+     },
+   },
 }
 </script>
 
