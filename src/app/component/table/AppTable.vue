@@ -159,6 +159,8 @@ created() {
 /*
   box-shadow: 0px 0px 20px 20px var(--TABLE_SHADOW);
 */
+
+
 }
 
 .table-title  {
@@ -172,6 +174,8 @@ created() {
 
   border-collapse: collapse;
 
+
+  width: 100%;
  }
 
  .app-table thead  {

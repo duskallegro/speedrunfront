@@ -1,14 +1,14 @@
 <template>
   <div class="practice-pair-container">
     <div class="header-text matching-pair-header">
-      <div>
+      <div class="pairs-practice-header">
         Find <span class="color-header">Matching</span> Pairs
       </div>
 
-      <div :class="'timer  ' + (finishedGuessing ? ' green' : '')" >{{timerValue()}}</div>
+      <div :class="'timer  ' + (this.finishedGuessing() ? ' green' : '')" >{{timerValue()}}</div>
     </div>
 
-    <div v-if="finishedGuessing" id="play-again-button-pairs">
+    <div v-if="this.finishedGuessing()" id="play-again-button-pairs">
       <AppButton text="PLAY AGAIN" :action="this.startGame"/>
     </div>
 
@@ -106,22 +106,26 @@ async created()  {
         this.milliseconds = new Date().getTime() - this.start;
       }
   }, 1);*/
-  this.updateTime();
+
 
 
 },
 
 computed:  {
-  finishedGuessing: function()  {
-    return this.pairsGuessed >= this.shuffledPairs.length;
-  }
+
 },
 
 methods:  {
-  updateTime()  {
-    this.milliseconds = new Date().getTime() - this.start;
+  finishedGuessing: function()  {
+    return this.pairsGuessed >= this.shuffledPairs.length;
+  },
 
-    requestAnimationFrame(this.updateTime);
+  updateTime()  {
+    if (!this.finishedGuessing()) {
+      this.milliseconds = new Date().getTime() - this.start;
+
+      requestAnimationFrame(this.updateTime);
+    }
   },
 
   startGame: async function()  {
@@ -157,6 +161,8 @@ methods:  {
 
     this.foreignHiddenStatuses = this.practicePairs.map((p) => false);
     this.translationHiddenStatuses = this.shuffledPairs.map((p) => false);
+
+    this.updateTime();
   },
 
   foreignCardClicked(index)  {
@@ -321,7 +327,7 @@ methods:  {
   },
 
   timerValue: function()  {
-    if (this.finishedGuessing)  {
+    if (this.finishedGuessing())  {
       return this.duration(this.milliseconds);
     }
 
@@ -446,6 +452,8 @@ methods:  {
     align-items: start;
 
     flex-direction: column;
+
+    font-size: 1em !important;
   }
 
 
@@ -521,9 +529,9 @@ methods:  {
       background-color: purple;
 */
 
-      max-width: 92%;
-      min-width: 92%;
-      width: 92%;
+      max-width: 93%;
+      min-width: 93%;
+      width: 93%;
 
       column-gap: 0.5em;
 
@@ -554,27 +562,24 @@ methods:  {
 */
 
 
-      width: 90% !important;
-      max-width: 90%;
-      min-width: 90%;
+      width: 94% !important;
+      max-width: 94%;
+      min-width: 94%;
 
       overflow: hidden;;
     }
 
     .pair-container  {
-      min-width: 97%;
-      max-width: 97%;
-      width: 97%;
+      min-width: 100%;
+      max-width: 100%;
+      width: 100%;
 
       column-gap: 0.2em !important;
       row-gap: 0em;
 
-      margin-left: 0.3em !important;
-      margin-right: 0.3em !important;
+      margin-left: 0.1em !important;
+      margin-right: 0.1em !important;
 
-/*
-      background-color: yellow;
-*/
 
 
     }
@@ -601,21 +606,21 @@ methods:  {
 
   @media screen and (max-width: 300px) {
     .practice-pair-container  {
-      width: 95%;
-      min-width: 95%;
+      width: 92%;
+      min-width: 92%;
 
 /*
       background-color: blue;
 */
 
-      width: 100%;
 
       overflow: hidden;;
     }
 
     .pair-container  {
-      min-width: 98%;
-      max-width: 98%;
+      min-width: 100%;
+      max-width: 100%;
+      width: 100%;
 
       column-gap: 0.1em !important;
       row-gap: 0em;
