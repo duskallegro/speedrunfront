@@ -88,6 +88,8 @@ data() {
 
     pairsGuessed: 0,
     finishedSeconds: 0,
+
+    start: Date
   }
 },
 
@@ -98,11 +100,13 @@ async created()  {
   console.log("created");
   await this.startGame();
 
-    setInterval(  ()  => {
+    /*setInterval(  ()  => {
       if (!this.finishedGuessing) {
-        this.milliseconds++;
+        // this.milliseconds++;
+        this.milliseconds = new Date().getTime() - this.start;
       }
-  });
+  }, 1);*/
+  this.updateTime();
 
 
 },
@@ -114,14 +118,22 @@ computed:  {
 },
 
 methods:  {
+  updateTime()  {
+    this.milliseconds = new Date().getTime() - this.start;
+
+    requestAnimationFrame(this.updateTime);
+  },
+
   startGame: async function()  {
     console.log("startGame");
+
 
     this.errorMessage = "";
 
     this.pairsGuessed = 0;
 
     // resetting the timer
+    this.start = new Date().getTime();
     this.milliseconds = 0;
 
     let userId = await UserService.getUserByUsername(this.username);
@@ -298,8 +310,8 @@ methods:  {
 
     return [
       this.format(hours),
-      this.format(minutes ),
-      this.format(seconds ),
+      this.format(minutes),
+      this.format(seconds),
       this.format(milliseconds)
     ].join(':');
   },
@@ -313,8 +325,9 @@ methods:  {
       return this.duration(this.milliseconds);
     }
 
-    this.finishedSeconds = JSON.parse(JSON.stringify(this.milliseconds));
-    return this.duration(this.finishedSeconds);
+    /*this.finishedSeconds = JSON.parse(JSON.stringify(this.milliseconds));
+    return this.duration(this.finishedSeconds);*/
+    return this.duration(this.milliseconds);
   }
 }
 
