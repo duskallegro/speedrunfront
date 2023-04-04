@@ -12,6 +12,10 @@
       <PracticeMode name="Find Pairs"
                     :link="'/' + this.$route.fullPath.substring(1) + '/pair'"
                     description="Find the correct pairs"/>
+
+      <PracticeMode name="Split Word"
+                    :link="'/' + this.$route.fullPath.substring(1) + '/split'"
+                    description="Make up the word from the split parts"/>
     </div>
 
   </div>

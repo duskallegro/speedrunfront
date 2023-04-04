@@ -12,7 +12,6 @@ import AddDeckPage from '@/deck/create/page/AddDeckPage';
 import TestPage from '@/app/test/TestPage';
 import AddPairPage from "@/card/create/page/AddPairPage";
 import EditPairPage from "@/card/edit/page/EditPairPage";
-import MoreTestPage from '@/app/test/MoreTestPage';
 
 import PracticeDeckPage from "@/deck/practice/general/page/PracticeDeckPage";
 import GuessAndRatePracticePage from "@/deck/practice/guess/page/GuessAndRatePracticePage";
@@ -20,6 +19,12 @@ import ChoicesPracticePage from "@/deck/practice/general/page/ChoicesPracticePag
 import SelectGuessPracticeModePage from "@/deck/practice/guess/page/SelectGuessPracticeModePage";
 import PairPracticePage from "@/deck/practice/pair/page/PairPracticePage";
 import ViewCardPage from "@/card/view/page/ViewCardPage";
+import SplitwordPage from "@/deck/practice/splitword/page/SplitwordPage";
+
+import TestPage2 from '@/test2/TestPage2';
+
+import TestPage3 from '@/app/test3/TestPage3';
+import TestPage4 from '@/app/test4/TestPage4';
 
  let router = createRouter({
     history: createWebHistory(),
@@ -44,11 +49,23 @@ import ViewCardPage from "@/card/view/page/ViewCardPage";
             name: 'TestPage',
             component: TestPage
         },
+
         {
-            path: '/more',
-            name: 'MoreTestPage',
-            component: MoreTestPage
+            path: '/test2',
+            name: 'TestPage2',
+            component: TestPage2
         },
+        {
+            path: '/test4',
+            name: 'TestPage4',
+            component: TestPage4
+        },
+        {
+            path: '/test3',
+            name: 'TestPage3',
+            component: TestPage3
+        },
+
         {
             path: '/user/:username',
             name: 'UserPage',
@@ -165,7 +182,17 @@ import ViewCardPage from "@/card/view/page/ViewCardPage";
                 deckId: parseInt(route.params.deckId),
                 cardId: parseInt(route.params.cardId)
             })
-        }
+        },
+
+        {
+            path: '/user/:username/deck/:padId/practice/split',
+            name: 'SplitwordPage',
+            component: SplitwordPage,
+            props: route => ({
+                padId: parseInt(route.params.padId),
+                loggedInUsername: route.params.username
+            })
+        },
     ]
 });
 

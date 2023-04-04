@@ -1,15 +1,15 @@
 <template>
   <div id="test-page">
-    <TestComponent/>
+    <TestComponent2/>
    </div>
 </template>
 
 <script>
 
- import TestComponent from "@/app/test/TestComponent";
+ import TestComponent2 from "./TestComponent2";
  export default {
-  name: "TestPage",
-  components: {TestComponent },
+  name: "TestPage2",
+  components: {TestComponent2 },
 
    async beforeCreate() {
 
@@ -24,7 +24,7 @@
 <style scoped>
   #test-page  {
     background-color: yellow;
-    width: 50%;
+    width: 80%;
 
     display: flex;
     justify-content: center;

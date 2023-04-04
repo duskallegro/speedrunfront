@@ -188,8 +188,8 @@ export default {
   grid-row-gap: 3em;
   overflow: auto;*/
 
-  max-width: 100%;
-  min-width:  100% !important;
+  max-width: 80% !important;
+  min-width:  80% !important;
 
  }
 
@@ -201,9 +201,31 @@ export default {
 
 /* Mobile decks */
 
+@media (min-width: 1500px) {
+  #decks-of-user-mobile-container  {
+    display: none;
+    width: 80%;
+  }
+
+  #user-pads-container  {
+    max-width: 80% !important;
+    min-width:  80% !important;
+    width: 80%;
+
+  }
+}
+
 @media (min-width: 1100px) {
   #decks-of-user-mobile-container  {
     display: none;
+     width: 80%;
+   }
+
+  #user-pads-container  {
+    max-width: 100% !important;;
+    width: 100% !important;;
+    min-width: 100% !important;;
+
   }
 }
 
@@ -211,6 +233,7 @@ export default {
 @media screen and (max-width: 1100px) {
   #user-pads-container {
     display: none;
+
   }
 
   #decks-of-user-mobile-container  {

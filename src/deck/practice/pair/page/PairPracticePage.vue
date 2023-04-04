@@ -1,9 +1,9 @@
 <template>
   <div class="practice-pair-container">
     <div class="header-text matching-pair-header">
-      <div class="pairs-practice-header">
+<!--      <div class="pairs-practice-header">
         Find <span class="color-header">Matching</span> Pairs
-      </div>
+      </div>-->
 
       <div :class="'timer  ' + (this.finishedGuessing() ? ' green' : '')" >{{timerValue()}}</div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper" ref="wrapper">
 
-    <TestCircle v-for="(circle, i) in this.circles.length"
+    <TestCircle2 v-for="(circle, i) in this.circles.length"
                  :value = this.circles[i] :key="i"
                 :left="this.coordinates[i].left"
                 :top="this.coordinates[i].top"
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import TestCircle from "@/app/test/TestCircle";
+import TestCircle2 from "./TestCircle2";
 
 export default {
-  name: "TestComponent",
-  components: {TestCircle},
+  name: "TestComponent2",
+  components: {TestCircle2},
   data() {
     return {
       circles: ['A', 'B', 'C', 'D', 'E', 'F'],
@@ -40,10 +40,13 @@ export default {
       do {
         isValid = false;
 
-        circleCoordinates.left = (this.randomInRange(0, wrapperWidth - circleWidth)).toString() + 'px';
-        circleCoordinates.top = (this.randomInRange(0, wrapperHeight - circleHeight)).toString() + 'px';
+        circleCoordinates.left = (this.randomInRange(0, 10)).toString() + '%';
+        circleCoordinates.top = (this.randomInRange(0, 10)).toString() + '%';
         circleCoordinates.width = 50;
         circleCoordinates.height = 50;
+
+        circleCoordinates.x = wrapperWidth * circleCoordinates.left / 100;
+        circleCoordinates.y = wrapperHeight * circleCoordinates.top / 100;
 
         isValid = !this.overlaps(this.coordinates, i, circleCoordinates);
       } while (!isValid);
@@ -78,14 +81,14 @@ export default {
           + " and "+ JSON.stringify(second));
 
       // Determine the coordinates of the edges of both rectangles
-      const firstLeft = parseFloat(first.left);
+      const firstLeft = parseFloat(first.x);
       const firstRight = firstLeft + first.width;
-      const firstTop = parseFloat(first.top);
+      const firstTop = parseFloat(first.y);
       const firstBottom = firstTop + first.height;
 
-      const secondLeft = parseFloat(second.left);
+      const secondLeft = parseFloat(second.x);
       const secondRight = secondLeft + second.width;
-      const secondTop = parseFloat(second.top);
+      const secondTop = parseFloat(second.y);
       const secondBottom = secondTop + second.height;
 
       // Check if any of the edges of the two rectangles overlap
@@ -116,13 +119,16 @@ export default {
   #wrapper  {
     margin: 2em;
 
-    height: 100px;
-    min-height: 100px;
+    height: 20%;
+    min-height: 20%;
 
-    width: 500px;
-    min-width: 500px;
+    width: 100%;
+    min-width: 100%;
 
     background-color: darkblue;
-    position: relative;
-  }
+
+    display: flex;
+    flex-wrap: wrap;
+
+    }
 </style>

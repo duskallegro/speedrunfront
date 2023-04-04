@@ -203,7 +203,9 @@ export default {
 .word-pairs-of-pad-container  {
     margin: 2em;
 
-    width: 40%;
+    width: 60%;
+    min-width: 60%;
+    max-width: 60%;
 
     display: flex;
     flex-direction: column;

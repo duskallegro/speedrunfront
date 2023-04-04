@@ -40,6 +40,8 @@ export default {
 
     if (this.theme === "gray")  {
 
+      this.root.style.setProperty("--oof", 'red');
+      this.root.style.setProperty("--circle-scale--ratio", '1');
 
 
       /* Components */
@@ -216,6 +218,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Josefin+Sans:wght@400;500&family=Moon+Dance&family=Overpass&family=Roboto:wght@300&family=Rubik:wght@300&family=Signika&display=swap');
 
 
+
+
 div, a, input, textarea, button, select  {
   -webkit-tap-highlight-color: transparent;
 
@@ -379,7 +383,14 @@ body  {
   margin-right: 5px;
 }
 
+.color-text  {
+  color: var(--TERTIARY_MAIN);
 
+}
+
+.title  {
+  font-size: 2em;
+}
 
 @media screen and (max-width: 1300px) {
 
@@ -398,4 +409,5 @@ body  {
 @media screen and (max-width: 300px) {
 
 }
+
 </style>
