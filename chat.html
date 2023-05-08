@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            margin: 2px 0;
+        }
+
+        /* Content styles */
+        .content {
+            padding: 20px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+
+
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Media queries for responsive design */
+        @media only screen and (max-width: 600px) {
+            /* Navbar styles */
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #333;
+                z-index: 1;
+            }
+
+            .menu a {
+                display: block;
+                color: #fff;
+                text-decoration: none;
+                padding: 10px;
+            }
+
+            .menu.show {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .menu.show a {
+                animation: fade-in 0.5s ease forwards;
+                animation-delay: calc(var(--index) * 0.1s);
+            }
+
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<div class="menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</div>
+
+<div class="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim vel sagittis aliquet, dolor erat
+        auctor elit, id fringilla lorem dolor non tellus. Quisque vel vestibulum augue, ac fermentum tellus. Integer vel
+        libero eget lorem faucibus ullamcorper eu sed enim. Integer ac quam ut risus iaculis faucibus. Suspendisse ut
+        nisi vitae ante bibendum egestas. Donec varius pharetra ornare. Praesent vel convallis mauris. Etiam vehicula
+        libero vel justo facilisis, quis convallis sapien ullamcorper. Nam luctus nibh eu mi convallis congue. Sed eget
+        felis dignissim, facilisis sapien vel, auctor ipsum. Duis finibus bibendum nunc vel viverra. Vivamus vehicula
+        nunc vel purus posuere, quis feugiat sapien gravida. Nam ut dui id risus dignissim consequat eget sed justo.</p>
+    <p>Nullam lobortis metus vel lectus vestibulum, eu gravida elit malesuada. Duis ultricies, quam sit amet maximus
+        molestie, magna risus consectetur lacus, vitae bibendum sem neque in ipsum. In vulputate nibh arcu, in posuere
+        quam vestibulum sit amet. Sed gravida, sem vel venenatis pulvinar, sem nulla dapibus felis, quis imperdiet felis
+        mi vel sem. Integer sed congue arcu. Nam efficitur, nisi in eleifend blandit, tellus metus pellentesque diam, eu
+        maximus turpis purus vitae enim. Donec sit amet feugiat neque. Pellentesque euismod consectetur eros, vel
+        tristique magna mollis quis. Fusce ultrices tempor odio, ut gravida felis imperdiet id. Integer id eros vitae
+        nunc lacinia luctus a eu nibh.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim vel sagittis aliquet, dolor erat
+        auctor elit, id fringilla lorem dolor non tellus. Quisque vel vestibulum augue, ac fermentum tellus. Integer vel
+        libero eget lorem faucibus ullamcorper eu sed enim. Integer ac quam ut risus iaculis faucibus. Suspendisse ut
+        nisi vitae ante bibendum egestas. Donec varius pharetra ornare. Praesent vel convallis mauris. Etiam vehicula
+        libero vel justo facilisis, quis convallis sapien ullamcorper. Nam luctus nibh eu mi convallis congue. Sed eget
+        felis dignissim, facilisis sapien vel, auctor ipsum. Duis finibus bibendum nunc vel viverra. Vivamus vehicula
+        nunc vel purus posuere, quis feugiat sapien gravida. Nam ut dui id risus dignissim consequat eget sed justo.</p>
+    <p>Nullam lobortis metus vel lectus vestibulum, eu gravida elit malesuada. Duis ultricies, quam sit amet maximus
+        molestie, magna risus consectetur lacus, vitae bibendum sem neque in ipsum. In vulputate nibh arcu, in posuere
+        quam vestibulum sit amet. Sed gravida, sem vel venenatis pulvinar, sem nulla dapibus felis, quis imperdiet felis
+        mi vel sem. Integer sed congue arcu. Nam efficitur, nisi in eleifend blandit, tellus metus pellentesque diam, eu
+        maximus turpis purus vitae enim. Donec sit amet feugiat neque. Pellentesque euismod consectetur eros, vel
+        tristique magna mollis quis. Fusce ultrices tempor odio, ut gravida felis imperdiet id. Integer id eros vitae
+        nunc lacinia luctus a eu nibh.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim vel sagittis aliquet, dolor erat
+        auctor elit, id fringilla lorem dolor non tellus. Quisque vel vestibulum augue, ac fermentum tellus. Integer vel
+        libero eget lorem faucibus ullamcorper eu sed enim. Integer ac quam ut risus iaculis faucibus. Suspendisse ut
+        nisi vitae ante bibendum egestas. Donec varius pharetra ornare. Praesent vel convallis mauris. Etiam vehicula
+        libero vel justo facilisis, quis convallis sapien ullamcorper. Nam luctus nibh eu mi convallis congue. Sed eget
+        felis dignissim, facilisis sapien vel, auctor ipsum. Duis finibus bibendum nunc vel viverra. Vivamus vehicula
+        nunc vel purus posuere, quis feugiat sapien gravida. Nam ut dui id risus dignissim consequat eget sed justo.</p>
+    <p>Nullam lobortis metus vel lectus vestibulum, eu gravida elit malesuada. Duis ultricies, quam sit amet maximus
+        molestie, magna risus consectetur lacus, vitae bibendum sem neque in ipsum. In vulputate nibh arcu, in posuere
+        quam vestibulum sit amet. Sed gravida, sem vel venenatis pulvinar, sem nulla dapibus felis, quis imperdiet felis
+        mi vel sem. Integer sed congue arcu. Nam efficitur, nisi in eleifend blandit, tellus metus pellentesque diam, eu
+        maximus turpis purus vitae enim. Donec sit amet feugiat neque. Pellentesque euismod consectetur eros, vel
+        tristique magna mollis quis. Fusce ultrices tempor odio, ut gravida felis imperdiet id. Integer id eros vitae
+        nunc lacinia luctus a eu nibh.</p>    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim vel sagittis aliquet, dolor erat
+    auctor elit, id fringilla lorem dolor non tellus. Quisque vel vestibulum augue, ac fermentum tellus. Integer vel
+    libero eget lorem faucibus ullamcorper eu sed enim. Integer ac quam ut risus iaculis faucibus. Suspendisse ut
+    nisi vitae ante bibendum egestas. Donec varius pharetra ornare. Praesent vel convallis mauris. Etiam vehicula
+    libero vel justo facilisis, quis convallis sapien ullamcorper. Nam luctus nibh eu mi convallis congue. Sed eget
+    felis dignissim, facilisis sapien vel, auctor ipsum. Duis finibus bibendum nunc vel viverra. Vivamus vehicula
+    nunc vel purus posuere, quis feugiat sapien gravida. Nam ut dui id risus dignissim consequat eget sed justo.</p>
+    <p>Nullam lobortis metus vel lectus vestibulum, eu gravida elit malesuada. Duis ultricies, quam sit amet maximus
+        molestie, magna risus consectetur lacus, vitae bibendum sem neque in ipsum. In vulputate nibh arcu, in posuere
+        quam vestibulum sit amet. Sed gravida, sem vel venenatis pulvinar, sem nulla dapibus felis, quis imperdiet felis
+        mi vel sem. Integer sed congue arcu. Nam efficitur, nisi in eleifend blandit, tellus metus pellentesque diam, eu
+        maximus turpis purus vitae enim. Donec sit amet feugiat neque. Pellentesque euismod consectetur eros, vel
+        tristique magna mollis quis. Fusce ultrices tempor odio, ut gravida felis imperdiet id. Integer id eros vitae
+        nunc lacinia luctus a eu nibh.</p>
+
+</div>
+
+<div class="footer">
+    <p>&copy; 2023 - All rights reserved</p>
+</div>
+
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
+
+    menu.querySelectorAll('a').forEach((link, index) => {
+        link.style.setProperty('--index', index);
+    });
+</script>
+</body>
+</html>

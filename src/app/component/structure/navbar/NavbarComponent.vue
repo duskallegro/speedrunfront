@@ -121,6 +121,8 @@ name: "NavbarComponent",
   top:0;
   position: fixed;
   height: 12vh;
+  min-height: 12vh;
+
   z-index: 1000;
 
   overflow: hidden;
@@ -151,6 +153,7 @@ name: "NavbarComponent",
 /* Navbar animation */
 
 @media screen and (max-width: 1300px) {
+
   #header  {
     width: 20%;
   }
@@ -275,6 +278,8 @@ name: "NavbarComponent",
     margin-left: 0 !important;
 
   }
+
+
 }
 
 

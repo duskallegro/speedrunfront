@@ -1,38 +1,27 @@
 <template>
-  <div class="circle" :style="{left: this.left,
-                 top: this.top}">
-    {{value}}
+  <div class="circle">
+    <span>{{ value }}</span>
   </div>
 </template>
 
+<style>
+.circle {
+  background-color: var(--circle-background-color);
+
+  border-radius: 20em;
+}
+</style>
+
 <script>
 export default {
-name: "TestCircle",
+  name: "TestCircle",
 
-props:  {
-  value: String,
-  left: Number,
-  top: Number
-}
-}
+  props: {
+    value: String,
+  },
+
+  data() {
+    return {};
+  },
+};
 </script>
-
-<style scoped>
-  .circle  {
-    background-color: red;
-
-    min-height: 49px;
-    height: 49px;
-
-    min-width: 49px;
-    width: 49px;
-
-    border-radius: 20em;
-    display: inline;
-    padding: 1em;
-    position: absolute;
-
-    border: 1px solid black;
-
-  }
-</style>

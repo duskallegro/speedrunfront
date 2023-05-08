@@ -43,7 +43,9 @@ export default {
 /*
     height: 80vh;
 */
+/*
     position: fixed;
+*/
 
   }
 

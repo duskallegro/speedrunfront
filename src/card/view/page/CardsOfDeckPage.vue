@@ -243,13 +243,12 @@ export default {
 
   @media (max-width: 1400px) {
     .word-pairs-of-pad-container  {
-      width: 80%;
-    }
+      width: 90%;
+      min-width: 90%;
+      max-width: 90%;
 
-    .wrapper-around-table  {
-      width: 75%;
-      min-width: 75%;
-      max-width: 75%;
+      margin: 1.5em;
+
     }
 
     .wrapper-around-table  {
@@ -266,7 +265,8 @@ export default {
       max-width: 90%;
 
        margin: 1.5em;
-    }
+
+     }
 
     .wrapper-around-table  {
       width: 100%;
@@ -275,7 +275,7 @@ export default {
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 870px) {
     .word-pairs-of-pad-container  {
       width: 95%;
       min-width: 95%;

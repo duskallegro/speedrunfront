@@ -221,6 +221,8 @@ created() {
   border-right: 0;
 }
 
+
+
 @media (max-width: 1200px) {
   .app-table th, td  {
     padding: 0.5em;
@@ -235,7 +237,7 @@ created() {
    }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 870px) {
   .app-table th, td  {
     padding: 0.5em;
   }

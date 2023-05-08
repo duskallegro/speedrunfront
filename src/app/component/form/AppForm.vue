@@ -282,7 +282,9 @@ input,  textarea  {
   }
 
   .input-fields, .msg {
+/*
     width: 100%;
+*/
   }
 }
 

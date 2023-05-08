@@ -35,6 +35,39 @@ props: {
   currentIndex: Number
 },
 
+computed:  {
+  styleObject()  {
+    return {
+      'margin-left': this.leftData,
+      'margin-top': this.topData,
+
+      '--circle-width': this.value.length > 2 ? this.value.length * 2.2 + 'vw' : "4vw",
+      '--circle-height': '4vw',
+      '--circle-font-size': this.value.length > 2 ? '1.6em' : '1.8em',
+
+      '--circle-width-big1': this.value.length > 2 ? this.value.length * 3 + 'vw' : "4vw",
+      '--circle-height-big1': '4vw',
+      '--circle-font-big1': this.value.length > 2 ?  '1.2em' : '1.4em',
+
+      '--circle-width-big2': this.value.length > 2 ? this.value.length * 3.5 + 'vw' : "8vw",
+      '--circle-height-big2': '8vw',
+      '--circle-font-big2': this.value.length > 2 ?  '1.2em' : '1.7em',
+
+      '--circle-width-big3': this.value.length > 2 ? this.value.length * 7 + 'vw' : "10vw",
+      '--circle-height-big3': '10vw',
+      '--circle-font-big3': this.value.length > 2 ?  '1.4em' : '1.4em',
+
+      '--circle-width-big4': this.value.length > 2 ? this.value.length * 9 + 'vw' : "15vw",
+      '--circle-height-big4': '15vw',
+      '--circle-font-big4': this.value.length > 2 ?  '1.4em' : '1.4em',
+
+      '--circle-width-big5': this.value.length > 2 ? this.value.length * 12 + 'vw' : "15vw",
+      '--circle-height-big5': '15vw',
+      '--circle-font-big5': this.value.length > 2 ?  '1.4em' : '1.4em',
+    }
+  },
+},
+
 data()  {
   return  {
     mouseX: {
@@ -47,34 +80,20 @@ data()  {
     leftData: Number,
     topData: Number,
 
-    styleObject:  {
-      'margin-left': this.leftData,
-      'margin-top': this.topData,
+    width: Number,
+    height: Number,
 
 
-
-    },
 
     isSelected: false,
     isGuessed: false,
     isError: false
-
-
   }
 },
 
 created() {
   this.leftData = this.left;
   this.topData = this.top;
-
-
-
-  this.styleObject = {
-    'margin-left': this.leftData,
-    'margin-top': this.topData,
-    left: 0,
-    top: 0
-  };
 },
 
   methods: {
@@ -83,12 +102,6 @@ created() {
   },
 
   clickEvent()  {
-/*
-    this.isSelected = !this.isSelected;
-*/
-
-   // if (this.isSelected)  {
-     // if (this.secret.trim().startsWith(this.value))  {
        if (this.index === this.currentIndex)  {
         this.isGuessed = true;
 
@@ -107,6 +120,8 @@ created() {
            //remove the class so animation can occur as many times as user
            // triggers event, delay must be longer than the animation duration and any delay.
            self.isError = false;
+
+           this.style.color = 'red !important';
          }, 600);
        }
 
@@ -123,14 +138,11 @@ created() {
 
 <style scoped>
 
+
+
 .split-circle  {
-    min-width: 10vw;
-    max-width: 10vw;
-
-    min-height: 10vw;
-    max-height: 10vw;
-
     border: 1px solid white;
+
     border-radius: 20em;
 
     padding: 1em;
@@ -140,12 +152,7 @@ created() {
     justify-content: center;
     align-items: center;
 
-  /*  -webkit-animation: floataround 1.1s infinite  alternate;
-    animation: floataround 1.1s infinite  alternate;
 
-    transform: scale(var(--scale--ratio-circle)) translate(0%, 0%);
-    transform-origin: 0% 0%;
-    transition: transform .9s;*/
 
     /* set default scale */
     scale: var(--scale--ratio-circle);
@@ -156,6 +163,10 @@ created() {
     -webkit-animation: floataround 1.1s infinite alternate;
     animation: floataround 1.1s infinite alternate;
 
+    background-color: var(--circle-background-color);
+    width: var(--circle-width);
+    height: var(--circle-height);
+    font-size: var(--circle-font-size);
   }
 
   .split-circle:hover  {
@@ -196,6 +207,7 @@ created() {
     timing-function: ease-in;
   }
   37% {
+    transform: translateX(5px);
     transform: translateX(5px);
     timing-function: ease-out;
   }
@@ -261,94 +273,88 @@ created() {
   }
 }
 
+@keyframes floataround {
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes slidedown {
+   0% {
+    opacity: 100%;
+   }
+  100% {
+    opacity: 0;
+    max-height: 0!important;;;
+    max-width: 0;
+    width: 0 !important;;
+    height: 0 !important;;
+
+   }
+}
 
 
 
-  @keyframes floataround {
-    0% {
-      translate: 0;
+@media screen and (min-width: 901px) {
+  .split-circle {
+      width: var(--circle-width-big1);
+      height: var(--circle-height-big1);
+
+      font-size: var(--circle-font-big1);
     }
-    100% {
-      translate: 0 -8px;
-    }
+}
+
+
+@media screen and (min-width: 1500px) {
+  .split-circle {
+    width: var(--circle-width);
+    height: var(--circle-height);
+
+    font-size: var(--circle-font-size);
   }
+}
 
-  @keyframes slidedown {
-     0% {
-      opacity: 100%;
-     }
-    100% {
-      opacity: 0;
-      max-height: 0!important;;;
-      max-width: 0;
-      width: 0 !important;;
-      height: 0 !important;;
 
-     }
+@media screen and (max-width: 900px) {
+  .split-circle {
+    width: var(--circle-width-big2);
+    height: var(--circle-height-big2);
+
+    font-size: var(--circle-font-big2);
   }
+}
 
-  @media screen and (min-width: 901px) {
-    .split-circle {
-      min-width: 4vw;
-      max-width: 4vw ;
+@media screen and (max-width: 700px) {
+  .split-circle {
+    width: var(--circle-width-big3);
+    height: var(--circle-height-big3);
 
-      min-height: 4vw;
-      max-height: 4vw;
-
-      font-size: 1.5em;
-     }
+    font-size: var(--circle-font-big3);
   }
+}
 
-  @media screen and (max-width: 900px) {
-    .split-circle {
-      min-width: 8vw;
-      max-width: 8vw;
+@media screen and (max-width: 400px) {
+  .split-circle {
+    width: var(--circle-width-big4);
+    height: var(--circle-height-big4);
 
-      min-height: 8vw;
-      max-height: 8vw;
+    font-size: var(--circle-font-big4);
 
-      font-size: 1.5em;
+   }
+}
 
-    }
+
+@media screen and (max-width: 350px) {
+  .split-circle {
+    width: var(--circle-width-big5);
+    height: var(--circle-height-big5);
+
+    font-size: var(--circle-font-big5);
   }
+}
 
-  @media screen and (max-width: 700px) {
-    .split-circle {
-      min-width: 10vw;
-      max-width: 10vw;
-
-
-      min-height: 10vw;
-      max-height: 10vw;
-
-      font-size: 1.2em;
-    }
-  }
-
-  @media screen and (max-width: 400px) {
-    .split-circle {
-      min-width: 15vw;
-      max-width: 15vw;
-
-      min-height: 15vw;
-      max-height: 15vw;
-
-     }
-  }
-
-
-  @media screen and (max-width: 350px) {
-    #circle-area  {
-      width: 90%;
-    }
-
-    .split-circle {
-      min-width: 15vw;
-      max-width: 15vw;
-
-      min-height: 15vw;
-      max-height: 15vw;
-    }
-  }
 
 </style>

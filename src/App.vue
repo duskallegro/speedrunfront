@@ -8,9 +8,7 @@
 
     </div>
 
-<!--
     <FooterComponent/>
--->
 
 
 </template>
@@ -217,7 +215,14 @@ export default {
 @import 'app/assets/main.css';
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Josefin+Sans:wght@400;500&family=Moon+Dance&family=Overpass&family=Roboto:wght@300&family=Rubik:wght@300&family=Signika&display=swap');
 
+* {
+  box-sizing: border-box;
+}
 
+
+html, body {
+  height: 100%;
+}
 
 
 div, a, input, textarea, button, select  {
@@ -231,7 +236,17 @@ div, a, input, textarea, button, select  {
 
 body {
   font-family: 'Josefin Sans', sans-serif;
-  height: 100%;
+/*
+  background-color:  yellow;
+*/
+/*  height: 100%;
+
+  height: 100vh;
+  width: 100vw;*/
+
+   /*
+    height: 100%;
+  */
   /*  background-color:  yellow;
 
     display: flex;
@@ -259,10 +274,6 @@ html  {
   scroll-behavior: smooth;
   scroll-padding-top: 1000px;
 
-  height: 100%;
-}
-body  {
-  height: 100%;
 }
 
 
@@ -287,13 +298,23 @@ body  {
 
 
 */
+/*
    min-height: 100%;
+*/
 
-  background-color: var(--BODY_BACKGROUND);
+/*
+  height: 100%;
+  width: 100%;*/
+   min-height: 100%;
+    background-color: var(--BODY_BACKGROUND);
   color: var(--LIGHT_FONT_COLOR) !important;
 /*
   background-color: red;
 */
+
+  display: flex;
+  flex-direction: column;
+
  }
 
 #content-component  {
@@ -302,21 +323,24 @@ body  {
   justify-content: start;
   align-items: center;
 
-  width: 100%;
+   flex: 1 0 auto;
 
   margin-top: 12vh;
 
   font-size: 1.2em;
 /*
-  background-color: yellow;
+  background-color: blue;
 */
+  /*border: 2px solid white;*/
 
+/*
   min-height: 90%;
+*/
  /*
   height: 84%;
 */
 
-  /*padding: 2em;*/
+  padding: 2em;
 }
 
 
@@ -393,7 +417,9 @@ body  {
 }
 
 @media screen and (max-width: 1300px) {
-
+  #content-component  {
+    margin-top: 0vh;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -402,7 +428,24 @@ body  {
 
 
 @media screen and (max-width: 400px) {
+  #content-component  {
+    padding: 1em;
 
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #content-component  {
+    padding: 1.2em;
+
+  }
+}
+
+@media screen and (max-width: 250px) {
+  #content-component  {
+    padding: 0.5em;
+
+  }
 }
 
 
